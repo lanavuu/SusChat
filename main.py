@@ -28,7 +28,8 @@ def settings():
             elif option == 3:
                 edit_acc_info_scene()
             elif option == 4:
-                main_menu()
+                # dont add another main_menu redirection since its already called
+                break
 def faq():
     pass
 
@@ -59,6 +60,7 @@ def login_scene():
                     clip_scene()
                 elif option == 7:
                     settings()
+                    break
                 elif option == 8:
                     faq()
     else:
@@ -80,7 +82,7 @@ def createAccountScene():
     userEntersPassword = input("\nPlease enter a password: ")
     newAcc = functions.createAccount(userEntersName, userEntersPassword)
     print("Account creation success!\n Redirecting you to login page..\n")
-    loginScene()
+    login_scene()
 
 
 def main_menu():
@@ -99,4 +101,5 @@ def main_menu():
             elif option == 3:
                 break
 
+main_menu()
         
