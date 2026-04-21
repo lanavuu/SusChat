@@ -1,5 +1,16 @@
 import functions
 
+# ========== SETTING FUNCTIONS ==========
+
+def edit_username_scene():
+    pass
+def change_password_scene():
+    pass
+def edit_account_info_scene():
+    pass
+
+# ========== LOGIN FUNCTIONS ==========
+
 def ship_message_scene():
     pass
 def inbox_scene():
@@ -32,6 +43,8 @@ def settings():
                 break
 def faq():
     pass
+
+# ========== MAIN MENU FUNCTIONS ==========
 
 def login_scene():
     username = input("\nUsername: ")
@@ -84,7 +97,7 @@ def createAccountScene():
     print("Account creation success!\n Redirecting you to login page..\n")
     login_scene()
 
-
+# MAIN MENU ==========
 def main_menu():
     while True:
         option = int(input("\n======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\n"))

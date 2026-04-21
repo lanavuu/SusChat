@@ -1,5 +1,10 @@
 import json
 
+class account():
+    def __init__(self, username, password, file="account_management.json"):
+        self.username = username
+        self.password = password
+
 def createAccount(username, password):
     with open("account_management.json", "r") as f:
         file = json.load(f)
