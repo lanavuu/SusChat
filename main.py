@@ -1,9 +1,14 @@
-
+import functions
 def loginScene():
     pass
 
 def createAccountScene():
-    pass
+    userEntersName = input("\nPlease enter a username: ")
+    userEntersPassword = input("\nPlease enter a password: ")
+    newAcc = functions.createAccount(userEntersName, userEntersPassword)
+    print("Account creation success!\n Redirecting you to login page..\n")
+    loginScene()
+
 
 def mainMenu():
     while True:
@@ -20,5 +25,5 @@ def mainMenu():
                 createAccountScene()
             elif option == 3:
                 break
-            
+
         
