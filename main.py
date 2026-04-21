@@ -13,11 +13,30 @@ def board_scene():
 def clip_scene():
     pass
 def settings():
-    pass
+    while True:
+        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n"))
+        try:
+            if option < 1 or option > 4:
+                raise ValueError("Error: enter a valid number between 1-4.\n")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                edit_username_scene()
+            elif option == 2:
+                change_password_scene()
+            elif option == 3:
+                edit_acc_info_scene()
+            elif option == 4:
+                main_menu()
 def faq():
     pass
 
-def loginScene():
+def login_scene():
+    username = input("\nUsername: ")
+    password = input("\nPassword: ")
+    functions.login(username, password)
+    
     while True:
         option = int(input("======= SPACE HUB =======\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
         try:
@@ -51,7 +70,7 @@ def createAccountScene():
     loginScene()
 
 
-def mainMenu():
+def main_menu():
     while True:
         option = int(input("\n======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\n"))
         try:
@@ -61,7 +80,7 @@ def mainMenu():
             print(e)
         else:
             if option == 1:
-                loginScene()
+                login_scene()
             elif option == 2:
                 createAccountScene()
             elif option == 3:
