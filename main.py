@@ -62,7 +62,18 @@ def login_scene():
                 elif option == 8:
                     faq()
     else:
-        login_scene()
+        option = int(input(("======= Login Unsuccessful =======\n1. Try again\n2. Return to previous page\n")))
+        try:
+            if option < 1 or option >2:
+                raise ValueError("Error: enter 1 or 2\n")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                login_scene()
+            elif option == 2:
+                main_menu()
+            
             
 def createAccountScene():
     userEntersName = input("\nPlease enter a username: ")
