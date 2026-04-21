@@ -5,7 +5,7 @@ class account():
         self.username = username
         self.password = password
 
-def createAccount(username, password):
+def create_account(username, password):
     with open("account_management.json", "r") as f:
         file = json.load(f)
 
@@ -31,3 +31,9 @@ def login(username, password):
     return logged_in
     
     
+def crew_list():
+    with open("account_management.json", "r") as f:
+        file = json.load(f)
+
+    friends = list(file.values())
+    return friends

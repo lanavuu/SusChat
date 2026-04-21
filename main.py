@@ -37,7 +37,7 @@ def settings():
             elif option == 2:
                 change_password_scene()
             elif option == 3:
-                edit_acc_info_scene()
+                edit_account_info_scene()
             elif option == 4:
                 # dont add another main_menu redirection since its already called
                 break
@@ -90,15 +90,16 @@ def login_scene():
                 main_menu()
             
             
-def createAccountScene():
+def create_account_scene():
     userEntersName = input("\nPlease enter a username: ")
     userEntersPassword = input("\nPlease enter a password: ")
-    newAcc = functions.createAccount(userEntersName, userEntersPassword)
+    newAcc = functions.create_account(userEntersName, userEntersPassword)
     print("Account creation success!\n Redirecting you to login page..\n")
     login_scene()
 
 # MAIN MENU ==========
 def main_menu():
+
     while True:
         option = int(input("\n======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\n"))
         try:
@@ -110,9 +111,10 @@ def main_menu():
             if option == 1:
                 login_scene()
             elif option == 2:
-                createAccountScene()
+                create_account_scene()
             elif option == 3:
                 break
 
-main_menu()
+if __name__ == "__main__":
+    main_menu()
         
