@@ -1,7 +1,48 @@
 import functions
-def loginScene():
+
+def ship_message_scene():
+    pass
+def inbox_scene():
+    pass
+def list_scene():
+    pass
+def search_scene():
+    pass
+def board_scene():
+    pass
+def clip_scene():
+    pass
+def settings():
+    pass
+def faq():
     pass
 
+def loginScene():
+    while True:
+        option = int(input("======= SPACE HUB =======\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
+        try:
+            if option < 1 or option > 8:
+                raise ValueError("Error: enter a valid number between 1-7.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                ship_message_scene()
+            elif option == 2:
+                inbox_scene()
+            elif option == 3:
+                list_scene()
+            elif option == 4:
+                search_scene()
+            elif option == 5:
+                board_scene()
+            elif option == 6:
+                clip_scene()
+            elif option == 7:
+                settings()
+            elif option == 8:
+                faq()
+            
 def createAccountScene():
     userEntersName = input("\nPlease enter a username: ")
     userEntersPassword = input("\nPlease enter a password: ")
