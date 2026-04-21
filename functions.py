@@ -36,4 +36,4 @@ def crew_list():
         file = json.load(f)
 
     friends = list(file.values())
-    return friends
+    print(f"List of friends: {friends}")

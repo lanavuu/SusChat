@@ -16,7 +16,7 @@ def ship_message_scene():
 def inbox_scene():
     pass
 def list_scene():
-    pass
+    functions.crew_list()
 def search_scene():
     pass
 def board_scene():
@@ -65,6 +65,7 @@ def login_scene():
                     inbox_scene()
                 elif option == 3:
                     list_scene()
+                    break
                 elif option == 4:
                     search_scene()
                 elif option == 5:
