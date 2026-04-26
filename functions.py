@@ -34,6 +34,8 @@ class account():
 
     def change_password(self, newPass):
         self.current_user["name"] = newPass
+    def logout(self):
+        self.current_user = None
 
     def get_crew_list(self):
         print(self.current_user["friends"])

@@ -40,6 +40,7 @@ def settings():
                 edit_account_info_scene()
             elif option == 4:
                 # dont add another main_menu redirection since its already called
+                account.logout()
                 break
 def faq():
     pass
