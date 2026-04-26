@@ -1,5 +1,4 @@
 import functions
-
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
@@ -16,7 +15,7 @@ def ship_message_scene():
 def inbox_scene():
     pass
 def list_scene():
-    functions.crew_list()
+    functions.account.crew_list()
 def search_scene():
     pass
 def board_scene():
@@ -47,9 +46,9 @@ def faq():
 # ========== MAIN MENU FUNCTIONS ==========
 
 def login_scene():
-    username = input("\nUsername: ")
-    password = input("\nPassword: ")
-    logged_in = functions.login(username, password)
+    user = input("\nUsername: ")
+    passw = input("\nPassword: ")
+    logged_in = functions.account.login(user, passw)
     if logged_in == True:
         while True:
             option = int(input("======= SPACE HUB =======\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
@@ -116,6 +115,4 @@ def main_menu():
             elif option == 3:
                 break
 
-if __name__ == "__main__":
-    main_menu()
-        
+main_menu()
