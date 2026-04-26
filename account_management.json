@@ -1,1 +1,16 @@
-[{"name": "lana", "password": "123", "friends": [], "favorite color": "n/a", "favorite role": "n/a"}]
+[
+    {
+        "name": "lana",
+        "password": "123",
+        "friends": [],
+        "favorite color": "n/a",
+        "favorite role": "n/a"
+    },
+    {
+        "name": "test",
+        "password": "000",
+        "friends": [],
+        "favorite color": "n/a",
+        "favorite role": "n/a"
+    }
+]

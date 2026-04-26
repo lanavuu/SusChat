@@ -30,10 +30,11 @@ class account():
         return False
     
     def change_user(self, newName):
+        
         self.current_user["name"] = newName
 
     def change_password(self, newPass):
-        self.current_user["name"] = newPass
+        self.current_user["password"] = newPass
     def logout(self):
         self.current_user = None
 
