@@ -3,9 +3,13 @@ account = account()
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
-    pass
+    new_username = input("\nEnter your new username: ")
+    account.change_user
+
 def change_password_scene():
-    pass
+    new_pass = input("\nEnter your new password: ")
+    account.change_password(new_pass)
+    
 def edit_account_info_scene():
     pass
 
@@ -16,7 +20,7 @@ def ship_message_scene():
 def inbox_scene():
     pass
 def list_scene():
-    list = account.crew_list()
+    list = account.get_crew_list()
 def search_scene():
     pass
 def board_scene():
