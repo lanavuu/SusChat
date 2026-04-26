@@ -3,17 +3,14 @@ import json
 class account():
     def __init__(self, filename="account_management.json"):
         self.file = filename
-        self.__account_list = []
+        self.__account_database = []
 
     def create_account(self, username, password):
-        with open("account_management.json", "r") as f:
-            file = json.load(f)
+        account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a"}
+        self.__account_database.append(account)
 
-        file["username"] = username
-        file["password"] = password
-
-        with open("account_managemen.json", "w") as f:
-            json.dump(file, f)
+        with open(self.file, "w") as f:
+            json.dump(self.__account_database, f)
 
     def login(self, username, password):
         with open("account_management.json", "r") as f:
