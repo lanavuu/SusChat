@@ -48,7 +48,7 @@ def faq():
 def login_scene():
     user = input("\nUsername: ")
     passw = input("\nPassword: ")
-    logged_in = functions.account.login(user, passw)
+    logged_in = functions.account.login(user, passw,passw)
     if logged_in == True:
         while True:
             option = int(input("======= SPACE HUB =======\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
@@ -115,4 +115,6 @@ def main_menu():
             elif option == 3:
                 break
 
-main_menu()
+if __name__ == "__main__":
+    main_menu()
+        
