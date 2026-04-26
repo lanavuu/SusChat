@@ -30,13 +30,8 @@ class account():
         return False
     
     def change_user(self, newName):
-        with open ("account_management.json", "r") as f:
-            file = json.load(f)
-        
-        for user in file:
-            if user["name"] == self.current_user["name"]:
-                user["name"] = newName
-                
+       if self.current_user != None:
+           
 
     def change_password(self, newPass):
         self.current_user["password"] = newPass
