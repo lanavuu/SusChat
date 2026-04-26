@@ -30,8 +30,4 @@ class account():
         return False
         
     def crew_list(self):
-        with open("account_management.json", "r") as f:
-            file = json.load(f)
-
-        friends = list(file.values())
-        print(f"List of friends: {friends}")
+        print(self.current_user["friends"])
