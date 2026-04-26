@@ -4,6 +4,8 @@ class account():
     def __init__(self, filename="account_management.json"):
         self.file = filename
         self.__account_database = []
+        self.current_user = None
+
 
         with open (filename, "r") as f:
             self.__account_database = json.load(f)
@@ -19,15 +21,13 @@ class account():
         with open("account_management.json", "r") as f:
             file = json.load(f)
 
-        logged_in = False
-        print(file)
-        if file["username"] != username or file["password"] != password:
-               print("Error: Username or password incorrect\n")
-               logged_in = False
-        else:
-            logged_in = True
-        return logged_in
-        
+        for user in file:
+            if user["name"] == username and user["password"] == password:
+                self.current_user = user
+                print("Login Successful!")
+                return True
+        print("Invalid Username or Password.")
+        return False
         
     def crew_list(self):
         with open("account_management.json", "r") as f:
