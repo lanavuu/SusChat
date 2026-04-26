@@ -29,5 +29,9 @@ class account():
         print("Invalid Username or Password.")
         return False
         
-    def crew_list(self):
+    def get_crew_list(self):
         print(self.current_user["friends"])
+
+    def set_favorite_color(self, color):
+        self.current_user["favorite color"] = color
+    
