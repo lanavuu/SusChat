@@ -17,6 +17,7 @@ class account():
             file = json.load(f)
 
         logged_in = False
+        print(file)
         if file["username"] != username or file["password"] != password:
                print("Error: Username or password incorrect\n")
                logged_in = False

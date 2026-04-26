@@ -1,4 +1,5 @@
-import functions
+from functions import account
+account = account()
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
@@ -15,7 +16,7 @@ def ship_message_scene():
 def inbox_scene():
     pass
 def list_scene():
-    functions.account.crew_list()
+    list = account.crew_list()
 def search_scene():
     pass
 def board_scene():
@@ -48,7 +49,7 @@ def faq():
 def login_scene():
     user = input("\nUsername: ")
     passw = input("\nPassword: ")
-    logged_in = functions.account.login(user, passw,passw)
+    logged_in = account.login(user, passw)
     if logged_in == True:
         while True:
             option = int(input("======= SPACE HUB =======\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
@@ -93,7 +94,7 @@ def login_scene():
 def create_account_scene():
     userEntersName = input("\nPlease enter a username: ")
     userEntersPassword = input("\nPlease enter a password: ")
-    newAcc = functions.create_account(userEntersName, userEntersPassword)
+    newAcc = account.create_account(userEntersName, userEntersPassword)
     print("Account creation success!\n Redirecting you to login page..\n")
     login_scene()
 
