@@ -1,8 +1,1 @@
-{
-    "username" : "lana",
-    "password" : "123",
-    "friends" : "",
-    "favorite color" : "rose",
-    "favorite role" : "imposter"
-
-}
+[{"name": "lana", "password": "123", "friends": [], "favorite color": "n/a", "favorite role": "n/a"}]

@@ -5,12 +5,15 @@ class account():
         self.file = filename
         self.__account_database = []
 
+        with open (filename, "r") as f:
+            self.__account_database = json.load(f)
+
     def create_account(self, username, password):
         account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a"}
         self.__account_database.append(account)
 
         with open(self.file, "w") as f:
-            json.dump(self.__account_database, f)
+            json.dump(self.__account_database, f, indent=4)
 
     def login(self, username, password):
         with open("account_management.json", "r") as f:
