@@ -28,10 +28,17 @@ class account():
                 return True
         print("Invalid Username or Password.")
         return False
-        
+    
+    def change_user(self, newName):
+        self.current_user["name"] = newName
+
+    def change_password(self, newPass):
+        self.current_user["name"] = newPass
+
     def get_crew_list(self):
         print(self.current_user["friends"])
 
     def set_favorite_color(self, color):
         self.current_user["favorite color"] = color
+
     
