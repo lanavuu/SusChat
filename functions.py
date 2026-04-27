@@ -68,7 +68,7 @@ class account():
 
         user = self.verify_account()
         if user == True:
-            user['favorite color'] == color
+            user['favorite color'] = color
             self.current_user = user
         
         with open(self.file, "w") as f:
@@ -81,7 +81,7 @@ class account():
 
         user = self.verify_account()
         if user == True:
-            user['favorite role'] == role
+            user['favorite role'] = role
             self.current_user = user
         
         with open(self.file, "w") as f:
