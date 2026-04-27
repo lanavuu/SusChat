@@ -143,14 +143,16 @@ class account():
                 json.dump(file, f, indent=4)
 
     def unblock(self, crewmate):
-        with open (self.file, "r") as f:
-            file = json.load(f)
+        with open(self.file, "r") as f:
+            file = json.dump(f)
+
         for user in file:
-            if user['name'] == self.current_user['name'] and user.get("blocked") != None:
-                for block in file:
-                    if block['blocked'] == crewmate:
-                        del block
-    
+            if user['name'] == self.current_user['name'] and crewmate in user['blocked']:
+                user['blocked'].remove(crewmate)
+                self.current_user = user
+        with open(self.file, "w")as f:
+            json.dump(file, f, indent=4)
+
     def blocked_list(self):
         with open (self.file, "r") as f:
             file = json.load(f)
