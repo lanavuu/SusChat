@@ -80,8 +80,20 @@ class account():
                 return False
             
     def add_crew(self, name_of_crewmate):
-        self.search_crewmate(name_of_crewmate)
-    
+        crew = self.search_crewmate(name_of_crewmate)
+        if crew == False:
+            print("Crewmate doesn't exist.\n")
+        else:
+            with open(self.file, "r") as f:
+                file = json.load(f)
+            
+            for user in file:
+                if user['name'] == self.current_user['name']:
+                    user['sent friend request'] = crew
+                    self.current_user = user
+                    print(f"Sent a friend request to: {crew}\n ")
+                    break
+
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
             file = json.load(f)
