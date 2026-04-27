@@ -32,14 +32,18 @@ class account():
     def change_user(self, newName):
         with open(self.file, "r") as f:
            file = json.load(f)
-        
-        for user in file:
-           if user["name"] == self.current_user["name"]:
-               user["name"] = newName
-               
-           
-           
 
+        name = self.current_user["name"]
+
+        for user in file:
+           if user["name"] == name:
+               user["name"] = newName
+               self.current_user = user
+               break
+           
+        with open(self.file, "w") as f:
+            json.dump(file, f, indent=4)
+               
     def change_password(self, newPass):
         self.current_user["password"] = newPass
     def logout(self):

@@ -9,7 +9,7 @@ def edit_username_scene():
 def change_password_scene():
     new_pass = input("\nEnter your new password: ")
     account.change_password(new_pass)
-    
+
 def edit_account_info_scene():
     pass
 
@@ -57,7 +57,7 @@ def login_scene():
     logged_in = account.login(user, passw)
     if logged_in == True:
         while True:
-            option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user["name"]}!\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
+            option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Crew List\n4. Crew Search\n5. Tip board\n6. Clip share\n7. Settings\n8. FAQ"))
             try:
                 if option < 1 or option > 8:
                     raise ValueError("Error: enter a valid number between 1-7.")
