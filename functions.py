@@ -75,7 +75,7 @@ class account():
 
         for user in file:
             if user['name'] == name_of_crewmate:
-                return user
+                return user['name']
             
         return False
             
@@ -132,11 +132,11 @@ class account():
                     user['blocked'] = []
                     user['blocked'].append(crew['name'])
                     self.current_user = user
-                    print(f"Removed {crew['name']} from crewmates list.\n ")
+                    print(f"Removed {crew} from crewmates list.\n ")
                     break
                 elif user['name'] == self.current_user['name'] and crew not in user['friends']:
                     user['blocked'] = []
-                    user['blocked'].append(crew['name'])
+                    user['blocked'].append(crew)
                     self.current_user = user
                     break
                 else:

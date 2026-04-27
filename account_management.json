@@ -7,7 +7,9 @@
         "favorite role": "imposter",
         "received friend requests": [],
         "sent friend requests": [],
-        "blocked": "test"
+        "blocked": [
+            "test"
+        ]
     },
     {
         "name": "test",
@@ -28,5 +30,17 @@
         "received friend requests": [],
         "sent friend requests": [],
         "blocked": []
+    },
+    {
+        "name": "imp",
+        "password": "222",
+        "friends": [],
+        "favorite color": "n/a",
+        "favorite role": "n/a",
+        "received friend requests": [],
+        "sent friend requests": [],
+        "blocked": [
+            "test"
+        ]
     }
 ]
