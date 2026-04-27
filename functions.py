@@ -67,7 +67,18 @@ class account():
                 file = json.load(f)
             
             for friends in file:
-                print(f"{friends}. {friends['friends']}")
+                print(f"{friends}. {friends['friends']}\n")
+                
+    def search_crewmate(self, name_of_crewmate):
+        with open (self.file, "r") as f:
+            file = json.load(f)
+
+        for user in file:
+            if user['name'] == name_of_crewmate:
+                print("Crewmate exists!\n")
+                return name_of_crewmate
+            else:
+                print("Crewmate doesn't exist.\n")
     
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
