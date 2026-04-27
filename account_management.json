@@ -1,14 +1,21 @@
 [
     {
-        "name": "notlana",
-        "password": "321",
+        "name": "lana",
+        "password": "111",
+        "friends": [],
+        "favorite color": "rose",
+        "favorite role": "imposter"
+    },
+    {
+        "name": "test",
+        "password": "000",
         "friends": [],
         "favorite color": "n/a",
         "favorite role": "n/a"
     },
     {
-        "name": "test",
-        "password": "000",
+        "name": "lana",
+        "password": "100",
         "friends": [],
         "favorite color": "n/a",
         "favorite role": "n/a"

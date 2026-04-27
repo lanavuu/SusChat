@@ -60,8 +60,15 @@ class account():
         self.current_user = None
 
     def get_crew_list(self):
-        print(self.current_user["friends"])
-
+        if self.current_user['friends'] == []:
+            print("\nCrew list is empty.")
+        else:
+            with open (self.file, "r") as f:
+                file = json.load(f)
+            
+            for friends in file:
+                print(f"{friends}. {friends['friends']}")
+    
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
             file = json.load(f)
@@ -85,7 +92,7 @@ class account():
                 user['favorite role'] = role
                 self.current_user = user
                 break
-            
+
         with open(self.file, "w") as f:
             json.dump(file, f, indent=4)
 
