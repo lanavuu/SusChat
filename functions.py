@@ -66,10 +66,11 @@ class account():
         with open(self.file, "r") as f:
             file = json.load(f)
 
-        user = self.verify_account()
-        if user == True:
-            user['favorite color'] = color
-            self.current_user = user
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                user['favorite color'] = color
+                self.current_user = user
+                break
         
         with open(self.file, "w") as f:
             json.dump(file, f, indent=4)
@@ -79,11 +80,12 @@ class account():
         with open(self.file, "r") as f:
             file = json.load(f)
 
-        user = self.verify_account()
-        if user == True:
-            user['favorite role'] = role
-            self.current_user = user
-        
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                user['favorite role'] = role
+                self.current_user = user
+                break
+            
         with open(self.file, "w") as f:
             json.dump(file, f, indent=4)
 
