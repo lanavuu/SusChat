@@ -11,7 +11,26 @@ def change_password_scene():
     account.change_password(new_pass)
 
 def edit_account_info_scene():
-    pass
+    print("====== GENERAL ACCOUNT INFO ======\n")
+    account.print_account_information()
+    while True:
+        option = int(input("Would you like to edit:\n1. Favorite Color\n2. Favorite Role\n3. Exit\n"))
+        try:
+            if option < 1 or option > 3:
+                raise ValueError("Error: enter a valid number between 1-3.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                color = input("Favorite Color: ")
+                account.set_favorite_color(color)
+                break
+            if option == 2:
+                role = input("Favorite Role: ")
+                account.set_favorite_role(role)
+                break
+            if option == 3:
+                break
 
 # ========== LOGIN FUNCTIONS ==========
 

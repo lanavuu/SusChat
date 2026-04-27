@@ -66,13 +66,21 @@ class account():
         with open(self.file, "r") as f:
             file = json.load(f)
 
-        verification = self.verify_account
-        if verification == True:
-            for user in file:
-                user['favorite color'] = color
-                self.current_user = user
-                break
-        
+        user = self.verify_account()
+        if user == True:
+            user['favorite color'] == color
+    
+    def set_favorite_role(self, role):
+        with open(self.file, "r") as f:
+            file = json.load(f)
+
+        user = self.verify_account()
+        if user == True:
+            user['favorite role'] == role
+            
+    def print_account_information(self):
+        user = self.current_user
+        print(f"Name: {user['name']}\nFavorite Color: {user['favorite color']}\nFavorite Role: {user['favorite role']}\n")
 
     def verify_account(self):
         # helper function to identify account
