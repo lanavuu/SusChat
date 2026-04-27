@@ -1,5 +1,8 @@
 from functions import account
 account = account()
+# ========== MANAGING FRIENDS/ VIEWING ACCOUNTS
+def viewing_other_accounts():
+    pass
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
@@ -41,8 +44,8 @@ def inbox_scene():
 def manage_crew():
    
     while True:
-        print("\n====== CREW HUB ======\n")
-        option = int(input("1. View Crew-list\n2. Search A Crewmate\nInput: "))
+        print("\n====== YOUR CREWMATES ======\n")
+        option = int(input("1. View Crew-list\n2. Search or Manage A Crewmate\nInput: "))
         try:
             if option < 1 or option > 2:
                 raise ValueError("Error: enter a valid number")
@@ -55,7 +58,21 @@ def manage_crew():
             if option == 2:
                 pass
 def search_scene():
-    pass
+    while True:
+        option = int(input("====== CREWMATE SEARCH ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Block Crewmate\n Input: "))
+        try:
+            if option < 1 or option > 4:
+                raise ValueError("Error: enter a valid number (1-4).")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                viewing_other_accounts()
+                break
+            elif option == 2:
+                
+        crewmate_searched = input("\nEnter the username of the crewmate: ")
+        account.search_crewmate(crewmate_searched)
 def board_scene():
     pass
 def clip_scene():

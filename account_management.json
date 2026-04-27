@@ -4,20 +4,26 @@
         "password": "111",
         "friends": [],
         "favorite color": "rose",
-        "favorite role": "imposter"
+        "favorite role": "imposter",
+        "received friend requests" : [],
+        "sent friend requests" : []
     },
     {
         "name": "test",
         "password": "000",
         "friends": [],
         "favorite color": "n/a",
-        "favorite role": "n/a"
+        "favorite role": "n/a",
+        "received friend requests" : [],
+        "sent friend requests" : []
     },
     {
         "name": "lana",
         "password": "100",
         "friends": [],
         "favorite color": "n/a",
-        "favorite role": "n/a"
+        "favorite role": "n/a",
+        "received friend requests" : [],
+        "sent friend requests" : []
     }
 ]

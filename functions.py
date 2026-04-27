@@ -11,7 +11,7 @@ class account():
             self.__account_database = json.load(f)
 
     def create_account(self, username, password):
-        account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a"}
+        account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : []}
         self.__account_database.append(account)
 
         with open(self.file, "w") as f:
@@ -68,7 +68,7 @@ class account():
             
             for friends in file:
                 print(f"{friends}. {friends['friends']}\n")
-                
+
     def search_crewmate(self, name_of_crewmate):
         with open (self.file, "r") as f:
             file = json.load(f)
