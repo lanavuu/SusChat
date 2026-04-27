@@ -30,12 +30,14 @@ class account():
         return False
     
     def change_user(self, newName):
-       if self.current_user != None:
-           self.current_user['name'] = newName
-           self.__account_database.append(self.current_user['name'])
-           with open(self.file, "w") as f:
-            json.dump(self.__account_database, f, indent=4)
-
+        with open(self.file, "r") as f:
+           file = json.load(f)
+        
+        for user in file:
+           if user["name"] == self.current_user["name"]:
+               user["name"] = newName
+               
+           
            
 
     def change_password(self, newPass):
