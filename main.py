@@ -4,7 +4,7 @@ account = account()
 
 def edit_username_scene():
     new_username = input("\nEnter your new username: ")
-    account.change_user
+    account.change_user(new_username)
 
 def change_password_scene():
     new_pass = input("\nEnter your new password: ")
