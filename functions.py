@@ -69,6 +69,11 @@ class account():
         user = self.verify_account()
         if user == True:
             user['favorite color'] == color
+            self.current_user = user
+        
+        with open(self.file, "w") as f:
+            json.dump(file, f, indent=4)
+            
     
     def set_favorite_role(self, role):
         with open(self.file, "r") as f:
@@ -77,7 +82,11 @@ class account():
         user = self.verify_account()
         if user == True:
             user['favorite role'] == role
-            
+            self.current_user = user
+        
+        with open(self.file, "w") as f:
+            json.dump(file, f, indent=4)
+
     def print_account_information(self):
         user = self.current_user
         print(f"Name: {user['name']}\nFavorite Color: {user['favorite color']}\nFavorite Role: {user['favorite role']}\n")
