@@ -116,7 +116,7 @@ class account():
 
             with open (self.file, "w") as f:
                 json.dump(file, f, indent=4)
-                
+
     def block(self, name_of_crewmate):
         crew = self.search_crewmate(name_of_crewmate)
         if crew == False:
@@ -142,9 +142,18 @@ class account():
             with open (self.file, "w") as f:
                 json.dump(file, f, indent=4)
 
+    def unblock(self, crewmate):
+        pass
+    
+    def blocked_list(self):
+        with open (self.file, "r") as f:
+            file = json.load(f)
 
-
-
+        for user in file:
+            if user['name'] == self.current_user['name'] and user.get("blocked") != None:
+                print(f"{user}. {user['blocked']}\n")
+            else:
+                print("0 crewmates blocked.\n")
 
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:

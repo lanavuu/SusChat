@@ -59,10 +59,10 @@ def manage_crew():
                 pass
 def search_scene():
     while True:
-        option = int(input("====== CREWMATE SEARCH ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Block Crewmate\n Input: "))
+        option = int(input("====== CREWMATE SEARCH ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Block Crewmate\n5. Unblock\n6. View blocked\n Input: "))
         try:
-            if option < 1 or option > 4:
-                raise ValueError("Error: enter a valid number (1-4).")
+            if option < 1 or option > 6:
+                raise ValueError("Error: enter a valid number (1-6).")
         except Exception as e:
             print(e)
         else:
@@ -70,9 +70,22 @@ def search_scene():
                 viewing_other_accounts()
                 break
             elif option == 2:
-                
-        crewmate_searched = input("\nEnter the username of the crewmate: ")
-        account.search_crewmate(crewmate_searched)
+                crew = input("\nEnter crew you want to add: ")
+                account.add_crew(crew)
+                break
+            elif option == 3:
+                account.get_crew_list()
+                crew = input("\nEnter crew you want to unadd: ")
+                account.unadd_crew(crew)
+                break
+            elif option == 4:
+                account.get_crew_list()
+                crew = input("\nEnter crew you want to block (you can also block crews not from the list): ")
+                account.block(crew)
+                break
+            elif option == 5:
+                pass
+            elif option == 6:
 def board_scene():
     pass
 def clip_scene():
