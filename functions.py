@@ -78,11 +78,12 @@ class account():
         # helper function to identify account
         with open(self.file, "r") as f:
             file = json.load(f)
-
+        if self.current_user == None:
+            return False
+        
         for user in file:
             if user['name'] == self.current_user['name']:
-                return True
-            else:
-                return False
+                return user
+        return False
 
     
