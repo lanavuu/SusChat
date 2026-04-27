@@ -105,9 +105,9 @@ class account():
                 file = json.load(f)
 
             for user in file:
-                if user['name'] == self.current_user['name'] and name_of_crewmate in user['friends']:
+                if user['name'] == self.current_user['name'] and crew in user['friends']:
 
-                    del name_of_crewmate
+                    del crew
                     self.current_user = user
                     print(f"Removed {crew} from crewmates list.\n ")
                     break
@@ -116,6 +116,33 @@ class account():
 
             with open (self.file, "w") as f:
                 json.dump(file, f, indent=4)
+                
+    def block(self, name_of_crewmate):
+        crew = self.search_crewmate(name_of_crewmate)
+        if crew == False:
+            print("Crewmate doesn't exist.\n")
+        else:
+            with open(self.file, "r") as f:
+                file = json.load(f)
+            
+            for user in file:
+                if user['name'] == self.current_user['name'] and crew in user['friends']:
+                    del crew
+                    user['blocked'] = crew
+                    self.current_user = user
+                    print(f"Removed {crew} from crewmates list.\n ")
+                    break
+                elif user['name'] == self.current_user['name'] and crew not in user['friends']:
+                    user['blocked'] = crew
+                    self.current_user = user
+                    break
+                else:
+                    print("Error, crewmate could not be located.")
+
+            with open (self.file, "w") as f:
+                json.dump(file, f, indent=4)
+
+
 
 
 
