@@ -11,7 +11,7 @@ class account():
             self.__account_database = json.load(f)
 
     def create_account(self, username, password):
-        account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : []}
+        account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : [], "blocked": []}
         self.__account_database.append(account)
 
         with open(self.file, "w") as f:
@@ -75,10 +75,12 @@ class account():
 
         for user in file:
             if user['name'] == name_of_crewmate:
-                print("Crewmate exists!\n")
                 return name_of_crewmate
             else:
-                print("Crewmate doesn't exist.\n")
+                return False
+            
+    def add_crew(self, name_of_crewmate):
+        self.search_crewmate(name_of_crewmate)
     
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
