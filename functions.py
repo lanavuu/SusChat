@@ -52,6 +52,7 @@ class account():
                 user['password'] = newPass
                 self.current_user = user
                 break
+
         with open(self.file, "w") as f:
             json.dump(file, f, indent=4)
 
@@ -62,6 +63,26 @@ class account():
         print(self.current_user["friends"])
 
     def set_favorite_color(self, color):
-        self.current_user["favorite color"] = color
+        with open(self.file, "r") as f:
+            file = json.load(f)
+
+        verification = self.verify_account
+        if verification == True:
+            for user in file:
+                user['favorite color'] = color
+                self.current_user = user
+                break
+        
+
+    def verify_account(self):
+        # helper function to identify account
+        with open(self.file, "r") as f:
+            file = json.load(f)
+
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                return True
+            else:
+                return False
 
     
