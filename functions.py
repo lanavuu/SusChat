@@ -75,9 +75,9 @@ class account():
 
         for user in file:
             if user['name'] == name_of_crewmate:
-                return name_of_crewmate
-            else:
-                return False
+                return user
+            
+        return False
             
     def add_crew(self, name_of_crewmate):
         crew = self.search_crewmate(name_of_crewmate)
@@ -119,6 +119,7 @@ class account():
 
     def block(self, name_of_crewmate):
         crew = self.search_crewmate(name_of_crewmate)
+        print(crew)
         if crew == False:
             print("Crewmate doesn't exist.\n")
         else:
@@ -128,12 +129,14 @@ class account():
             for user in file:
                 if user['name'] == self.current_user['name'] and crew in user['friends']:
                     del crew
-                    user['blocked'] = crew
+                    user['blocked'] = []
+                    user['blocked'].append(crew['name'])
                     self.current_user = user
-                    print(f"Removed {crew} from crewmates list.\n ")
+                    print(f"Removed {crew['name']} from crewmates list.\n ")
                     break
                 elif user['name'] == self.current_user['name'] and crew not in user['friends']:
-                    user['blocked'] = crew
+                    user['blocked'] = []
+                    user['blocked'].append(crew['name'])
                     self.current_user = user
                     break
                 else:

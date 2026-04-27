@@ -5,9 +5,9 @@
         "friends": [],
         "favorite color": "rose",
         "favorite role": "imposter",
-        "received friend requests" : [],
-        "sent friend requests" : [],
-        "blocked" : []
+        "received friend requests": [],
+        "sent friend requests": [],
+        "blocked": "test"
     },
     {
         "name": "test",
@@ -15,8 +15,8 @@
         "friends": [],
         "favorite color": "n/a",
         "favorite role": "n/a",
-        "received friend requests" : [],
-        "sent friend requests" : [],
+        "received friend requests": [],
+        "sent friend requests": [],
         "blocked": []
     },
     {
@@ -25,8 +25,8 @@
         "friends": [],
         "favorite color": "n/a",
         "favorite role": "n/a",
-        "received friend requests" : [],
-        "sent friend requests" : [],
-        "blocked" : []
+        "received friend requests": [],
+        "sent friend requests": [],
+        "blocked": []
     }
 ]

@@ -56,7 +56,8 @@ def manage_crew():
                 account.get_crew_list()
                 break
             if option == 2:
-                pass
+                search_scene()
+                break
 def search_scene():
     while True:
         option = int(input("====== CREWMATE SEARCH ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Block Crewmate\n5. Unblock\n6. View blocked\n Input: "))
@@ -86,6 +87,7 @@ def search_scene():
             elif option == 5:
                 pass
             elif option == 6:
+                pass
 def board_scene():
     pass
 def clip_scene():
@@ -136,6 +138,7 @@ def login_scene():
                     break
                 elif option == 4:
                     board_scene()
+                    break
                 elif option == 5:
                     clip_scene()
                 elif option == 6:
