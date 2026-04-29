@@ -2,7 +2,17 @@ from functions import account
 account = account()
 # ========== MANAGING FRIENDS/ VIEWING ACCOUNTS
 def viewing_other_accounts():
-    pass
+    while True:
+        searched = input("=== LOOK UP ===\nEnter name of crewmate to search: ")
+       
+        while account.search_crewmate(searched) == False:
+            option = input("The crewmate you entered doesn't exist. Please enter the following:\n1. Keep Searching\n2. Exit Lookup Station\nInput: ")
+            if option == 1:
+                viewing_other_accounts()
+                break
+            elif option == 2:
+                break
+
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
