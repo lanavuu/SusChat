@@ -107,7 +107,7 @@ class account():
             for user in file:
                 if user['name'] == self.current_user['name'] and crew in user['friends']:
 
-                    del crew
+                    user['friends'].remove(name_of_crewmate)
                     self.current_user = user
                     print(f"Removed {crew} from crewmates list.\n ")
                     break
@@ -209,4 +209,3 @@ class account():
                 return user
         return False
 
-    
