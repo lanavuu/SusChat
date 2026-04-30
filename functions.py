@@ -77,7 +77,7 @@ class account():
             if user['name'] == name_of_crewmate:
                 return user['name']
             
-        return False
+        return None
             
     def add_crew(self, name_of_crewmate):
         with open(self.file, "r")as f:
@@ -138,25 +138,30 @@ class account():
                 i+=1
         
     def unadd_crew(self, name_of_crewmate):
-        crew = self.search_crewmate(name_of_crewmate)
-        if crew == False:
-            print("Crewmate doesn't exist.\n")
-        else:
-            with open (self.file, "r") as f:
-                file = json.load(f)
+        with open(self.file, "r")as f:
+            file = json.load(f)
 
-            for user in file:
-                if user['name'] == self.current_user['name'] and crew in user['friends']:
+        current = None
+        other = None
 
-                    user['friends'].remove(name_of_crewmate)
-                    self.current_user = user
-                    print(f"Removed {crew} from crewmates list.\n ")
-                    break
-                else:
-                    print("Error, crewmate could not be located.")
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                current = user
+            if user['name'] == name_of_crewmate:
+                other = user
+        
+        if other == None:
+            print("Crewmate not found.\n")
+        elif other['name'] not in current['friends'] or current['name'] not in other['friends']:
+            print("Unable to perform action: crewmate not located in friends list.\n")
+        elif other['name'] in current['friends'] and current['name'] in other['friends']:
+            other['friends'].remove(current['name'])
+            current['friends'].remove(other['friends'])
 
-            with open (self.file, "w") as f:
-                json.dump(file, f, indent=4)
+            self.current_user = user
+        
+        with open(self.file, "w")as f:
+            json.dump(file, f, indent=4)
 
     def block(self, name_of_crewmate):
         crew = self.search_crewmate(name_of_crewmate)
