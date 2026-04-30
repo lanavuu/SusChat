@@ -78,7 +78,25 @@ class account():
         return False
             
     def add_crew(self, name_of_crewmate):
-        crew = self.search_crewmate(name_of_crewmate)
+
+        current = None
+        other = None
+
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                current = user
+            elif user['name'] == name_of_crewmate:
+                other = user
+
+        if self.search_crewmate(other) == False:
+            print("Crewmate not found\n")
+        
+        elif user['name'] in other['blocked'] or other['blocked']
+
+
+
+
+
         if crew == False:
             print("Crewmate doesn't exist.\n")
         else:
@@ -182,6 +200,9 @@ class account():
                 print(f"{user}. {user['blocked']}\n")
             else:
                 print("0 crewmates blocked.\n")
+
+    def check_if_blocked(self, crew):
+
 
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
