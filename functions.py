@@ -84,14 +84,24 @@ class account():
         else:
             with open(self.file, "r") as f:
                 file = json.load(f)
-            
+
             for user in file:
-                if user['name'] == self.current_user['name'] and user['name'] not in name_of_crewmate['blocked']:
-                    user['sent friend requests'] = []
-                    user['sent friend request'].append(crew)
+                if user['name'] == name_of_crewmate:
+                    other_crewmate = user
+
+            for user in file:
+                if user['name'] == self.current_user['name'] and user['name'] not in other_crewmate['blocked']:
+                    user['sent friend requests'].append(crew)
                     self.current_user = user
                     print(f"\nSent a friend request to: {crew} ")
                     break
+                else:
+                    print(f"\nCould not send friend request to '{name_of_crewmate}")
+                    
+            for user in file:
+                if user['name'] == other_crewmate['name'] and self.current_user['name'] not in other_crewmate['blocked']:
+
+                    user['received friend requests'].append(self.current_user['name'])
 
 
             with open (self.file, "w") as f:
