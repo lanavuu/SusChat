@@ -186,21 +186,37 @@ class account():
             current['blocked'].append(other['name'])
 
         self.current_user = current
-        
+
         with open (self.file, "w") as f:
             json.dump(file, f, indent=4)
 
     def unblock(self, crewmate):
+        """
+        Unblocks "crewmate" by checking if crewmate is blocked
+        """
         if self.current_user['blocked'] == []:
             print("You have no one blocked.\n")
 
         with open(self.file, "r") as f:
-            file = json.dump(f)
+            file = json.load(f)
+        
+        current = None
+        other = None
 
         for user in file:
-            if user['name'] == self.current_user['name'] and crewmate in user['blocked']:
-                user['blocked'].remove(crewmate)
-                self.current_user = user
+            if user['name'] == self.current_user['name']:
+                current = user
+            if user['name'] == crewmate:
+                other = user
+        
+        if other == None:
+            print("Crewmate not found.\n")
+
+        elif other['name'] in current['blocked']:
+            current['blocked'].remove(other['name'])
+            print(f"{other['name']} has been successfully unblocked!\n")
+        
+        self.current_user = current
 
         with open(self.file, "w")as f:
             json.dump(file, f, indent=4)
