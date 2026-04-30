@@ -53,7 +53,7 @@ def ship_message_scene():
     account.send_message(crew, msg)
     while True:
 
-        option = input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\nInput: ")
+        option = int(input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\nInput: "))
         try:
             if option < 1 or option > 2:
                 raise ValueError("Error: enter a valid number between 1-2.")
@@ -69,7 +69,7 @@ def ship_message_scene():
 def inbox_scene():
 
     while True:
-        option=input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:")
+        option= int(input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:"))
         try:
             if option < 1 or option >3:
                 raise ValueError("Error: enter a valid number between 1-3.")
