@@ -156,7 +156,7 @@ class account():
             print("Unable to perform action: crewmate not located in friends list.\n")
         elif other['name'] in current['friends'] and current['name'] in other['friends']:
             other['friends'].remove(current['name'])
-            current['friends'].remove(other['friends'])
+            current['friends'].remove(other['name'])
 
             self.current_user = user
         
