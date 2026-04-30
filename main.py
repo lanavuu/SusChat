@@ -53,10 +53,10 @@ def ship_message_scene():
     account.send_message(crew, msg)
     while True:
 
-        option = input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\n3. Return to Space Hub\nInput: ")
+        option = input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\nInput: ")
         try:
-            if option < 1 or option > 3:
-                raise ValueError("Error: enter a valid number between 1-3.")
+            if option < 1 or option > 2:
+                raise ValueError("Error: enter a valid number between 1-2.")
         except Exception as e:
             print(e)
         else:
@@ -64,9 +64,6 @@ def ship_message_scene():
                 break
             elif option == 2:
                 inbox_scene()
-                break
-            elif option == 3:
-                login_scene()
                 break
 
 def inbox_scene():
@@ -174,12 +171,10 @@ def faq():
 # ========== MAIN MENU FUNCTIONS ==========
 
 def login_scene():
-    logged_in = False
-    if logged_in == False:
-        user = input("\nUsername: ")
-        passw = input("\nPassword: ")
-        logged_in = account.login(user, passw)
-    elif logged_in == True:
+    user = input("\nUsername: ")
+    passw = input("\nPassword: ")
+    logged_in = account.login(user, passw)
+    if logged_in == True:
         while True:
             option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. Clip share\n6. Settings\n7. FAQ\nInput: "))
             try:
