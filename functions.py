@@ -197,7 +197,7 @@ class account():
             if user['name'] == self.current_user['name'] and crewmate in user['blocked']:
                 user['blocked'].remove(crewmate)
                 self.current_user = user
-                
+
         with open(self.file, "w")as f:
             json.dump(file, f, indent=4)
 
@@ -241,6 +241,20 @@ class account():
     def print_account_information(self):
         user = self.current_user
         print(f"Name: {user['name']}\nFavorite Color: {user['favorite color']}\nFavorite Role: {user['favorite role']}\n")
+
+    def print_other_acc_info(self, other):
+        with open(self.file, "r") as f:
+            file = json.load(f)
+
+        other = None
+
+        for user in file:
+            if user['name'] == other['name']:
+                other = user
+
+        print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['username']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}\n")
+
+
 
     def verify_account(self):
         # helper function to identify account
