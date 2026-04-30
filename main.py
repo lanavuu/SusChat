@@ -54,19 +54,21 @@ def inbox_scene():
 def manage_crew():
    
     while True:
-        print("\n====== YOUR CREWMATES ======\n")
-        option = int(input("1. View Crew-list\n2. Search or Manage A Crewmate\nInput: "))
+        print("====== YOUR CREWMATES ======\n")
+        option = int(input("1. View Crew-list\n2. Search or Manage A Crewmate\n3. Return\nInput: "))
         try:
-            if option < 1 or option > 2:
+            if option < 1 or option > 3:
                 raise ValueError("Error: enter a valid number")
         except Exception as e:
             print(e)
         else:
             if option == 1:
                 account.get_crew_list()
-                break
-            if option == 2:
+                
+            elif option == 2:
                 search_scene()
+                break
+            elif option == 3:
                 break
 def search_scene():
     while True:
@@ -147,7 +149,7 @@ def login_scene():
                     inbox_scene()
                 elif option == 3:
                     manage_crew()
-                    break
+                    
                 elif option == 4:
                     board_scene()
                     break

@@ -9,7 +9,8 @@
         "sent friend requests": [],
         "blocked": [
             "test"
-        ]
+        ],
+        "sent friend request": "imp"
     },
     {
         "name": "test",

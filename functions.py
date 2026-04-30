@@ -63,11 +63,9 @@ class account():
         if self.current_user['friends'] == []:
             print("\nCrew list is empty.")
         else:
-            with open (self.file, "r") as f:
-                file = json.load(f)
-            
-            for friends in file:
-                print(f"{friends}. {friends['friends']}\n")
+            print("\n======= CREW LIST =======")
+            for friend in self.current_user['friends']:
+                print(friend)
 
     def search_crewmate(self, name_of_crewmate):
         with open (self.file, "r") as f:
@@ -88,14 +86,23 @@ class account():
                 file = json.load(f)
             
             for user in file:
-                if user['name'] == self.current_user['name']:
-                    user['sent friend request'] = crew
+                if user['name'] == self.current_user['name'] and user['name'] not in name_of_crewmate['blocked']:
+                    user['sent friend requests'] = []
+                    user['sent friend request'].append(crew)
                     self.current_user = user
-                    print(f"Sent a friend request to: {crew}\n ")
+                    print(f"\nSent a friend request to: {crew} ")
                     break
+
+
             with open (self.file, "w") as f:
                 json.dump(file, f, indent=4)
 
+
+    def received_friend_requests(self):
+        with open (self.file, "r") as f:
+            file = json.load(f)
+
+        
     def unadd_crew(self, name_of_crewmate):
         crew = self.search_crewmate(name_of_crewmate)
         if crew == False:
