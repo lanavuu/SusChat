@@ -6,13 +6,10 @@
         "favorite color": "rose",
         "favorite role": "imposter",
         "received friend requests": [],
-        "sent friend requests": [
-            "imp"
-        ],
+        "sent friend requests": [],
         "blocked": [
             "bombosus"
-        ],
-        "sent friend request": []
+        ]
     },
     {
         "name": "test",
@@ -40,11 +37,12 @@
         "friends": [],
         "favorite color": "n/a",
         "favorite role": "n/a",
-        "received friend requests": [
-            "lana"
-        ],
+        "received friend requests": [],
         "sent friend requests": [],
-        "blocked": []
+        "blocked": [
+            "catlover",
+            "lana"
+        ]
     },
     {
         "name": "catlover",

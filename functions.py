@@ -68,7 +68,7 @@ class account():
             print("\nCrew list is empty.")
             return
         print("\n======= CREW LIST =======")
-        i = 0
+        i = 1
         for friend in self.current_user['friends']:
             print(f'{i}. {friend}\n')
             i += 1
