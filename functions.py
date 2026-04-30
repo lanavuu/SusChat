@@ -126,6 +126,7 @@ class account():
             for crew in self.current_user['received friend requests']:
                 print(f'{i}. {crew}\n')
                 i+=1
+
     def get_sent_friend_requests(self):
         if self.current_user['sent friend requests'] == []:
             print("\nCrew list is empty.")
@@ -135,7 +136,6 @@ class account():
             for crew in self.current_user['sent friend requests']:
                 print(f'{i}. {crew}\n')
                 i+=1
-
         
     def unadd_crew(self, name_of_crewmate):
         crew = self.search_crewmate(name_of_crewmate)
@@ -187,6 +187,9 @@ class account():
                 json.dump(file, f, indent=4)
 
     def unblock(self, crewmate):
+        if self.current_user['blocked'] == []:
+            print("You have no one blocked.\n")
+
         with open(self.file, "r") as f:
             file = json.dump(f)
 
@@ -194,6 +197,7 @@ class account():
             if user['name'] == self.current_user['name'] and crewmate in user['blocked']:
                 user['blocked'].remove(crewmate)
                 self.current_user = user
+                
         with open(self.file, "w")as f:
             json.dump(file, f, indent=4)
 
