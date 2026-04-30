@@ -78,6 +78,8 @@ class account():
         return False
             
     def add_crew(self, name_of_crewmate):
+        with open(self.file, "r")as f:
+            file = json.load(f)
 
         current = None
         other = None
@@ -91,39 +93,22 @@ class account():
         if self.search_crewmate(other) == False:
             print("Crewmate not found\n")
         
-        elif user['name'] in other['blocked'] or other['blocked']
+        elif current['name'] in other['blocked'] or other['name'] in current['blocked']:
+            print("Could not perform action, check blocked lists.\n")
+        elif current['name'] in other['sent friend requests']:
+            other['friends'].append(current['name'])
+            current['friends'].append(other['name'])
 
 
+        elif current['name'] not in other['sent friend requests']:
+            current['sent friend requests'].append(other['name'])
+            other['received friend requests'].append(current['name'])
 
+            
+        self.current_user = current
 
-
-        if crew == False:
-            print("Crewmate doesn't exist.\n")
-        else:
-            with open(self.file, "r") as f:
-                file = json.load(f)
-
-            for user in file:
-                if user['name'] == name_of_crewmate:
-                    other_crewmate = user
-
-            for user in file:
-                if user['name'] == self.current_user['name'] and user['name'] not in other_crewmate['blocked']:
-                    user['sent friend requests'].append(crew)
-                    self.current_user = user
-                    print(f"\nSent a friend request to: {crew} ")
-                    break
-                else:
-                    print(f"\nCould not send friend request to '{name_of_crewmate}")
-                    
-            for user in file:
-                if user['name'] == other_crewmate['name'] and self.current_user['name'] not in other_crewmate['blocked']:
-
-                    user['received friend requests'].append(self.current_user['name'])
-
-
-            with open (self.file, "w") as f:
-                json.dump(file, f, indent=4)
+        with open (self.file, "w") as f:
+            json.dump(file, f, indent=4)
 
 
     def received_friend_requests(self):
