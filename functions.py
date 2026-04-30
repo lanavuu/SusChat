@@ -237,19 +237,11 @@ class account():
             return
        
         print("\n==== BLOCKED LIST ====")
-        i = 0
+        i = 1
         for blocked in self.current_user['blocked']:
             print(f"{i}. {blocked}\n")
             i+=1
 
-        with open (self.file, "r") as f:
-            file = json.load(f)
-
-        for user in file:
-            if user['name'] == self.current_user['name'] and user.get("blocked") != None:
-                print(f"{user}. {user['blocked']}\n")
-            else:
-                print("0 crewmates blocked.\n")
 
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
@@ -282,20 +274,21 @@ class account():
         user = self.current_user
         print(f"Name: {user['name']}\nFavorite Color: {user['favorite color']}\nFavorite Role: {user['favorite role']}\n")
 
-    def print_other_acc_info(self, other):
+    def print_other_acc_info(self, other_acc):
         with open(self.file, "r") as f:
             file = json.load(f)
 
         other = None
 
         for user in file:
-            if user['name'] == other['name']:
+            if user['name'] == other_acc:
                 other = user
+                break
         if other is None:
             print("Crewmate not found")
             return
 
-        print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['username']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}\n")
+        print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['name']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}\n")
 
     def send_message(self, receiver, message):
         if self.current_user == None:

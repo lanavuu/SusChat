@@ -115,7 +115,7 @@ def search_scene():
             if option == 1:
                 crew = input("\nEnter crew you want to view: ")
                 account.print_other_acc_info(crew)
-                break
+             
                 
             elif option == 2:
                 crew = input("\nEnter crew you want to add: ")
@@ -173,7 +173,7 @@ def faq():
 
 def login_scene():
     user = input("\nUsername: ")
-    passw = input("\nPassword: ")
+    passw = input("Password: ")
     logged_in = account.login(user, passw)
     if logged_in == True:
         while True:
