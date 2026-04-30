@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 class account():
     def __init__(self, filename="account_management.json"):
@@ -287,8 +288,28 @@ class account():
 
         print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['username']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}\n")
 
+    def send_message(self, receiver, message):
+        if self.current_user == None:
+            print("Error: you are not logged in.")
+        with open (self.file, "r") as f:
+            file = json.load(f)
+        
+        current = None
+        other = None
 
+        for user in file:
+            if user['name'] == self.current_user:
+                current = user
+            if user['name'] == receiver:
+                other = receiver
+        if other == None:
+            print("Crewmate not found.\n")
+        elif other != None and current != None:
+            msg = f"{datetime.now().strftime("%Y-%m-%d %I:%M %p")} | from: {current['name']} | to: {other['name']} | message: {message}"
 
+        with open("message_log.txt", "a") as f:
+            f.write(msg)
+            
     def verify_account(self):
         # helper function to identify account
         with open(self.file, "r") as f:

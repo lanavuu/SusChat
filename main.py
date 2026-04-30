@@ -50,7 +50,22 @@ def edit_account_info_scene():
 def ship_message_scene():
     pass
 def inbox_scene():
-    pass
+    while True:
+        option=input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:"):
+        try:
+            if option < 1 or option >3:
+                raise ValueError("Error: enter a valid number between 1-3.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                ship_message_scene()
+                break
+            elif option == 2:
+                pass
+            elif option == 3:
+                break
+            
 def manage_crew():
    
     while True:
@@ -106,7 +121,7 @@ def search_scene():
                 account.get_blocked_list()
             elif option == 7:
                 break
-            
+
 def board_scene():
     pass
 def clip_scene():
