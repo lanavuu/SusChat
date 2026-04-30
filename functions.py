@@ -126,6 +126,15 @@ class account():
             for crew in self.current_user['received friend requests']:
                 print(f'{i}. {crew}\n')
                 i+=1
+    def get_sent_friend_requests(self):
+        if self.current_user['sent friend requests'] == []:
+            print("\nCrew list is empty.")
+        else:
+            print("\n======= SENT FRIEND REQUESTS =======")
+            i = 0
+            for crew in self.current_user['sent friend requests']:
+                print(f'{i}. {crew}\n')
+                i+=1
 
         
     def unadd_crew(self, name_of_crewmate):
