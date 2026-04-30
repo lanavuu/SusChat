@@ -1,15 +1,17 @@
 import json
 from datetime import datetime
+from pathlib import Path
 
 class account():
     def __init__(self, filename="account_management.json"):
-        self.file = filename
+        self.file = Path(__file__).parent / filename
+        self.message_log = Path(__file__).parent / "message_log.txt"
         self.__account_database = []
         self.current_user = None
 
-
-        with open (filename, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             self.__account_database = json.load(f)
+
 
     def create_account(self, username, password):
         account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : [], "blocked": []}
@@ -19,7 +21,7 @@ class account():
             json.dump(self.__account_database, f, indent=4)
 
     def login(self, username, password):
-        with open("account_management.json", "r") as f:
+        with open(self.file, "r") as f:
             file = json.load(f)
 
         for user in file:
@@ -63,7 +65,7 @@ class account():
     def get_crew_list(self):
 
         # dict.get(key, default val), if friends doesn't have a value give an empty list
-        friends = self.current_user.get("friends, []")
+        friends = self.current_user.get("friends", [])
         if friends == []:
             print("\nCrew list is empty.")
             return
@@ -311,7 +313,7 @@ class account():
         elif other != None and current != None:
             msg = f"{datetime.now().strftime('%Y-%m-%d %I:%M %p')} | from: {current['name']} | to: {other['name']} | message: {message}"
 
-            with open("message_log.txt", "a") as f:
+            with open(self.message_log, "a", encoding="utf-8") as f:
                 f.write(msg)
             print(f"Message to {other['name']} sent!\n")
 
