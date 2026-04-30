@@ -12,10 +12,28 @@ class account():
         with open(self.file, "r", encoding="utf-8") as f:
             self.__account_database = json.load(f)
 
+    def delete_account(self):
+        """Delete current user's account.
+        
+        Find the user's name in the file and delete it from the file.
+        """
+        with open(self.file, "r") as f:
+            file = json.load(f)
+
+        for user in file:
+            if self.current_user['name'] not in user['name']:
+                return
+            elif user['name'] == self.current_user['name']:
+                del user
+                self.current_user = None
+                break
+            
+        with open(self.file, "w") as f:
+            json.dump(file, f,indent=4)
 
     def create_account(self, username, password):
         """Create an account that doesn't exist.
-        
+
         User will create account then stored into `account_management` file.
 
         Args:
@@ -453,7 +471,7 @@ class account():
             print("Crewmate not found.\n")
             return None
         elif other != None and current != None:
-            msg = f"{datetime.now().strftime('%Y-%m-%d %I:%M %p')} | from: {current['name']} | to: {other['name']} | message: {message}"
+            msg = f"{datetime.now().strftime('%Y-%m-%d %I:%M %p')} | from: {current['name']} | to: {other['name']} | message: {message}\n"
 
             with open(self.message_log, "a", encoding="utf-8") as f:
                 f.write(msg)
