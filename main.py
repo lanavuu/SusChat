@@ -69,7 +69,7 @@ def ship_message_scene():
 def inbox_scene():
 
     while True:
-        option=input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:"):
+        option=input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:")
         try:
             if option < 1 or option >3:
                 raise ValueError("Error: enter a valid number between 1-3.")
@@ -87,7 +87,7 @@ def inbox_scene():
 def manage_crew():
    
     while True:
-        print("====== YOUR CREWMATES ======\n")
+        print("====== YOUR CREWMATES ======")
         option = int(input("1. View Crew-list\n2. Search or Manage A Crewmate\n3. Return\nInput: "))
         try:
             if option < 1 or option > 3:
@@ -114,7 +114,8 @@ def search_scene():
         else:
             if option == 1:
                 crew = input("\nEnter crew you want to view: ")
-                viewing_other_accounts(crew)
+                account.print_other_acc_info(crew)
+                break
                 
             elif option == 2:
                 crew = input("\nEnter crew you want to add: ")
