@@ -66,12 +66,12 @@ class account():
         friends = self.current_user.get("friends, []")
         if friends == []:
             print("\nCrew list is empty.")
-        else:
-            print("\n======= CREW LIST =======")
-            i = 0
-            for friend in self.current_user['friends']:
-                print(f'{i}. {friend}\n')
-                i += 1
+            return
+        print("\n======= CREW LIST =======")
+        i = 0
+        for friend in self.current_user['friends']:
+            print(f'{i}. {friend}\n')
+            i += 1
 
     def search_crewmate(self, name_of_crewmate):
         with open (self.file, "r") as f:
@@ -98,9 +98,11 @@ class account():
 
         if other is None:
             print("Crewmate not found\n")
+            return
         
         elif current['name'] in other['blocked'] or other['name'] in current['blocked']:
             print("Could not perform action, check blocked lists.\n")
+            return
 
         elif current['name'] in other['sent friend requests']:
             other['friends'].append(current['name'])
@@ -123,12 +125,13 @@ class account():
     def get_received_friend_requests(self):
         if self.current_user['received friend requests'] == []:
             print("\nCrew list is empty.")
-        else:
-            print("\n======= RECEIVED FRIEND REQUESTS =======")
-            i = 0
-            for crew in self.current_user['received friend requests']:
-                print(f'{i}. {crew}\n')
-                i+=1
+            return
+        
+        print("\n======= RECEIVED FRIEND REQUESTS =======")
+        i = 0
+        for crew in self.current_user['received friend requests']:
+            print(f'{i}. {crew}\n')
+            i+=1
 
     def get_sent_friend_requests(self):
         if self.current_user['sent friend requests'] == []:
@@ -153,10 +156,12 @@ class account():
             if user['name'] == name_of_crewmate:
                 other = user
         
-        if other == None:
+        if other is None:
             print("Crewmate not found.\n")
+            return
         elif other['name'] not in current['friends'] or current['name'] not in other['friends']:
             print("Unable to perform action: crewmate not located in friends list.\n")
+            return
         elif other['name'] in current['friends'] and current['name'] in other['friends']:
             other['friends'].remove(current['name'])
             current['friends'].remove(other['name'])
@@ -226,15 +231,16 @@ class account():
             json.dump(file, f, indent=4)
 
     def get_blocked_list(self):
-        blocked = self.current_user.get("blocked, []")
+        blocked = self.current_user.get("blocked", [])
         if blocked == []:
             print("==== BLOCKED LIST ====\n No one is blocked.\n")
-        else:
-            print("\n==== BLOCKED LIST ====")
-            i = 0
-            for blocked in self.current_user['blocked']:
-                print(f"{i}. {blocked}\n")
-                i+=1
+            return
+       
+        print("\n==== BLOCKED LIST ====")
+        i = 0
+        for blocked in self.current_user['blocked']:
+            print(f"{i}. {blocked}\n")
+            i+=1
 
         with open (self.file, "r") as f:
             file = json.load(f)
@@ -285,6 +291,9 @@ class account():
         for user in file:
             if user['name'] == other['name']:
                 other = user
+        if other is None:
+            print("Crewmate not found")
+            return
 
         print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['username']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}\n")
 
