@@ -48,8 +48,29 @@ def edit_account_info_scene():
 # ========== LOGIN FUNCTIONS ==========
 
 def ship_message_scene():
-    pass
+    crew = input("=== COMMUNICATIONS ===\nEnter crewmate: ")
+    msg = input("\nEnter the message: ")
+    account.send_message(crew, msg)
+    while True:
+
+        option = input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\n3. Return to Space Hub\nInput: ")
+        try:
+            if option < 1 or option > 3:
+                raise ValueError("Error: enter a valid number between 1-3.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                break
+            elif option == 2:
+                inbox_scene()
+                break
+            elif option == 3:
+                login_scene()
+                break
+
 def inbox_scene():
+
     while True:
         option=input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:"):
         try:
@@ -65,7 +86,7 @@ def inbox_scene():
                 pass
             elif option == 3:
                 break
-            
+
 def manage_crew():
    
     while True:
@@ -153,10 +174,12 @@ def faq():
 # ========== MAIN MENU FUNCTIONS ==========
 
 def login_scene():
-    user = input("\nUsername: ")
-    passw = input("\nPassword: ")
-    logged_in = account.login(user, passw)
-    if logged_in == True:
+    logged_in = False
+    if logged_in == False:
+        user = input("\nUsername: ")
+        passw = input("\nPassword: ")
+        logged_in = account.login(user, passw)
+    elif logged_in == True:
         while True:
             option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. Clip share\n6. Settings\n7. FAQ\nInput: "))
             try:

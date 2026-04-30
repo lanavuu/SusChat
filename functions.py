@@ -314,11 +314,13 @@ class account():
                 other = user
         if other == None:
             print("Crewmate not found.\n")
+            return None
         elif other != None and current != None:
             msg = f"{datetime.now().strftime('%Y-%m-%d %I:%M %p')} | from: {current['name']} | to: {other['name']} | message: {message}"
 
             with open("message_log.txt", "a") as f:
                 f.write(msg)
+            print(f"Message to {other['name']} sent!\n")
 
     def verify_account(self):
         # helper function to identify account
