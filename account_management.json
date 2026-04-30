@@ -53,5 +53,15 @@
         "received friend requests": [],
         "sent friend requests": [],
         "blocked": []
+    },
+    {
+        "name": "deleteme",
+        "password": "hi",
+        "friends": [],
+        "favorite color": "n/a",
+        "favorite role": "n/a",
+        "received friend requests": [],
+        "sent friend requests": [],
+        "blocked": []
     }
 ]

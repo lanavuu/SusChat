@@ -24,7 +24,7 @@ class account():
             if self.current_user['name'] not in user['name']:
                 return
             elif user['name'] == self.current_user['name']:
-                del user
+                user.remove(self.current_user)
                 self.current_user = None
                 break
             

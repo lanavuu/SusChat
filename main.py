@@ -147,10 +147,10 @@ def clip_scene():
     pass
 def settings():
     while True:
-        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\nInput: "))
+        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\n6. DELETE ACCOUNT\nInput: "))
         try:
-            if option < 1 or option > 5:
-                raise ValueError("Error: enter a valid number between 1-5.\n")
+            if option < 1 or option > 6:
+                raise ValueError("Error: enter a valid number between 1-6.\n")
         except Exception as e:
             print(e)
         else:
@@ -166,6 +166,20 @@ def settings():
                 break
             elif option == 5:
                 break
+            elif option == 6:
+                try:
+                    choice = int(input("Are you sure you want to delete your account?\n1. Yes\n2. No\nInput: "))
+                    if choice < 1 or choice > 3:
+                        raise ValueError("Error: enter a valid number 1-3.")
+                except Exception as e:
+                    print(e)
+                else:
+                    if option == 1:
+                        account.delete_account()
+                        break
+                    if option == 2:
+                        break
+
 def faq():
     pass
 
