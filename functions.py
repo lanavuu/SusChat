@@ -224,7 +224,7 @@ class account():
         with open(self.file, "w")as f:
             json.dump(file, f, indent=4)
 
-    def blocked_list(self):
+    def get_blocked_list(self):
         blocked = self.current_user.get("blocked, []")
         if blocked == []:
             print("==== BLOCKED LIST ====\n No one is blocked.\n")
