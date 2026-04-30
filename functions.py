@@ -64,8 +64,10 @@ class account():
             print("\nCrew list is empty.")
         else:
             print("\n======= CREW LIST =======")
+            i = 0
             for friend in self.current_user['friends']:
-                print(friend)
+                print(f'{i}. {friend}\n')
+                i += 1
 
     def search_crewmate(self, name_of_crewmate):
         with open (self.file, "r") as f:
@@ -90,14 +92,18 @@ class account():
             elif user['name'] == name_of_crewmate:
                 other = user
 
-        if self.search_crewmate(other) == False:
+        if other is None:
             print("Crewmate not found\n")
         
         elif current['name'] in other['blocked'] or other['name'] in current['blocked']:
             print("Could not perform action, check blocked lists.\n")
+
         elif current['name'] in other['sent friend requests']:
             other['friends'].append(current['name'])
             current['friends'].append(other['name'])
+
+            other['sent friend requests'].remove(current['name'])
+            current['received friend requests'].remove(other['name'])
 
 
         elif current['name'] not in other['sent friend requests']:
@@ -111,9 +117,15 @@ class account():
             json.dump(file, f, indent=4)
 
 
-    def received_friend_requests(self):
-        with open (self.file, "r") as f:
-            file = json.load(f)
+    def get_received_friend_requests(self):
+        if self.current_user['received friend requests'] == []:
+            print("\nCrew list is empty.")
+        else:
+            print("\n======= RECEIVED FRIEND REQUESTS =======")
+            i = 0
+            for crew in self.current_user['received friend requests']:
+                print(f'{i}. {crew}\n')
+                i+=1
 
         
     def unadd_crew(self, name_of_crewmate):
@@ -185,9 +197,6 @@ class account():
                 print(f"{user}. {user['blocked']}\n")
             else:
                 print("0 crewmates blocked.\n")
-
-    def check_if_blocked(self, crew):
-
 
     def set_favorite_color(self, color):
         with open(self.file, "r") as f:
