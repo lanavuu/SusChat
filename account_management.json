@@ -7,10 +7,8 @@
         "favorite role": "imposter",
         "received friend requests": [],
         "sent friend requests": [],
-        "blocked": [
-            "test"
-        ],
-        "sent friend request": "imp"
+        "blocked": [],
+        "sent friend request": []
     },
     {
         "name": "test",
@@ -40,8 +38,16 @@
         "favorite role": "n/a",
         "received friend requests": [],
         "sent friend requests": [],
-        "blocked": [
-            "test"
-        ]
+        "blocked": []
+    },
+    {
+        "name": "catlover",
+        "password": "1233",
+        "friends": [],
+        "favorite color": "maroon",
+        "favorite role": "detective",
+        "received friend requests": [],
+        "sent friend requests": [],
+        "blocked": []
     }
 ]

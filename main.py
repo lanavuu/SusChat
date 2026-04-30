@@ -108,10 +108,10 @@ def clip_scene():
     pass
 def settings():
     while True:
-        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\nInput: "))
+        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\nInput: "))
         try:
-            if option < 1 or option > 4:
-                raise ValueError("Error: enter a valid number between 1-4.\n")
+            if option < 1 or option > 5:
+                raise ValueError("Error: enter a valid number between 1-5.\n")
         except Exception as e:
             print(e)
         else:
@@ -124,6 +124,8 @@ def settings():
             elif option == 4:
                 # dont add another main_menu redirection since its already called
                 account.logout()
+                break
+            elif option == 5:
                 break
 def faq():
     pass

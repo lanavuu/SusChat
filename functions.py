@@ -105,7 +105,6 @@ class account():
             other['sent friend requests'].remove(current['name'])
             current['received friend requests'].remove(other['name'])
 
-
         elif current['name'] not in other['sent friend requests']:
             current['sent friend requests'].append(other['name'])
             other['received friend requests'].append(current['name'])
@@ -158,38 +157,38 @@ class account():
             other['friends'].remove(current['name'])
             current['friends'].remove(other['name'])
 
-            self.current_user = user
+            self.current_user = current
         
         with open(self.file, "w")as f:
             json.dump(file, f, indent=4)
 
     def block(self, name_of_crewmate):
-        crew = self.search_crewmate(name_of_crewmate)
-        print(crew)
-        if crew == False:
-            print("Crewmate doesn't exist.\n")
-        else:
-            with open(self.file, "r") as f:
-                file = json.load(f)
-            
-            for user in file:
-                if user['name'] == self.current_user['name'] and crew in user['friends']:
-                    del crew
-                    user['blocked'] = []
-                    user['blocked'].append(crew['name'])
-                    self.current_user = user
-                    print(f"Removed {crew} from crewmates list.\n ")
-                    break
-                elif user['name'] == self.current_user['name'] and crew not in user['friends']:
-                    user['blocked'] = []
-                    user['blocked'].append(crew)
-                    self.current_user = user
-                    break
-                else:
-                    print("Error, crewmate could not be located.")
+        with open(self.file, "r")as f:
+            file = json.load(f)
+        
+        current = None
+        other = None
 
-            with open (self.file, "w") as f:
-                json.dump(file, f, indent=4)
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                current = user
+            if user['name'] == name_of_crewmate:
+                other = user
+        
+        if other == None:
+            print("Crewmate not found.\n")
+        elif other['name'] in current['friends'] and current['name'] in other['friends']:
+            other['friends'].remove(current['name'])
+            current['friends'].remove(other['name'])
+
+            current['blocked'].append(other['name'])
+        else:
+            current['blocked'].append(other['name'])
+
+        self.current_user = current
+        
+        with open (self.file, "w") as f:
+            json.dump(file, f, indent=4)
 
     def unblock(self, crewmate):
         if self.current_user['blocked'] == []:
