@@ -60,7 +60,10 @@ class account():
         self.current_user = None
 
     def get_crew_list(self):
-        if self.current_user['friends'] == []:
+
+        # dict.get(key, default val), if friends doesn't have a value give an empty list
+        friends = self.current_user.get("friends, []")
+        if friends == []:
             print("\nCrew list is empty.")
         else:
             print("\n======= CREW LIST =======")
@@ -222,6 +225,16 @@ class account():
             json.dump(file, f, indent=4)
 
     def blocked_list(self):
+        blocked = self.current_user.get("blocked, []")
+        if blocked == []:
+            print("==== BLOCKED LIST ====\n No one is blocked.\n")
+        else:
+            print("\n==== BLOCKED LIST ====")
+            i = 0
+            for blocked in self.current_user['blocked']:
+                print(f"{i}. {blocked}\n")
+                i+=1
+
         with open (self.file, "r") as f:
             file = json.load(f)
 
