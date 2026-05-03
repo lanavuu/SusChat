@@ -169,15 +169,15 @@ def settings():
             elif option == 6:
                 try:
                     choice = int(input("Are you sure you want to delete your account?\n1. Yes\n2. No\nInput: "))
-                    if choice < 1 or choice > 3:
-                        raise ValueError("Error: enter a valid number 1-3.")
+                    if choice < 1 or choice > 2:
+                        raise ValueError("Error: enter a valid number 1-2.")
                 except Exception as e:
                     print(e)
                 else:
                     if option == 1:
                         account.delete_account()
                         break
-                    if option == 2:
+                    elif option == 2:
                         break
 
 def faq():

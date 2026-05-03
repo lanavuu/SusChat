@@ -17,19 +17,23 @@ class account():
         
         Find the user's name in the file and delete it from the file.
         """
-        with open(self.file, "r") as f:
+        if self.current_user is None:
+            print("Error: account not logged in.")
+            return False
+        
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
-            if self.current_user['name'] not in user['name']:
-                return
-            elif user['name'] == self.current_user['name']:
-                user.remove(self.current_user)
+            if user['name'] == self.current_user['name']:
+                file.remove(user)
                 self.current_user = None
-                break
-            
-        with open(self.file, "w") as f:
-            json.dump(file, f,indent=4)
+                with open(self.file,"w", encoding="utf-8") as f:
+                    json.dump(file, f, indent=4)
+                
+                return True
+        
+        return False
 
     def create_account(self, username, password):
         """Create an account that doesn't exist.
