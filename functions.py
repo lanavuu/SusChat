@@ -28,11 +28,11 @@ class account():
             if user['name'] != self.current_user['name']:
                 if self.current_user['name'] in user['friends']:
                     user['friends'].remove(self.current_user['name'])
-                elif self.current_user['name'] in user['sent friend requests']:
+                if self.current_user['name'] in user['sent friend requests']:
                     user['sent friend requests'].remove(self.current_user['name'])
-                elif self.current_user['name'] in user['received friend requests']:
+                if self.current_user['name'] in user['received friend requests']:
                     user['received friend requests'].remove(self.current_user['name'])
-                elif self.current_user['name'] in user['blocked']:
+                if self.current_user['name'] in user['blocked']:
                     user['blocked'].remove(self.current_user['name'])
         for user in file:
             if user['name'] == self.current_user['name']:
