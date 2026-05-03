@@ -23,9 +23,13 @@ class account():
         
         with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
-
+        
         for user in file:
             if user['name'] == self.current_user['name']:
+                file.remove(user['friends'])
+                file.remove(user['sent friend requests'])
+                file.remove(user['received friend requests'])
+                file.remove(user['blocked'])
                 file.remove(user)
                 self.current_user = None
                 with open(self.file,"w", encoding="utf-8") as f:
