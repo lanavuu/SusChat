@@ -104,12 +104,22 @@ def role_scene():
             print(f"Favorite role added: {chosen_role}")
             account.set_favorite_role(chosen_role)
             break
-        
+
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
-    new_username = input("\nEnter your new username: ")
-    account.change_user(new_username)
+    while True:
+        try:
+            new_username = input("\nEnter your new username: ")
+            check = account.change_user(new_username)
+            if check == False:
+                raise Exception("Someone already has this username.")
+        except Exception as e:
+            print(e)
+        else:
+            if check == True:
+                print("Username change successful!\n")
+        
 
 def change_password_scene():
     new_pass = input("\nEnter your new password: ")
