@@ -62,7 +62,7 @@ class account():
         Return:
             ``False`` if another account has the same username.
         """
-        with open(self.file, "r", encoding="utf=8") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
@@ -70,10 +70,11 @@ class account():
                 return False
             
         account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : [], "blocked": []}
-        self.__account_database.append(account)
+        file.append(account)
 
         with open(self.file, "w") as f:
-            json.dump(self.__account_database, f, indent=4)
+            json.dump(file, f, indent=4)
+        return True
 
     def login(self, username, password):
         """Log into an existing account.
@@ -501,10 +502,10 @@ class account():
             print("Crewmate not found.\n")
             return None
         elif other != None and current != None:
-            msg = f"{datetime.now().strftime('%Y-%m-%d %I:%M %p')} | from: {current['name']} | to: {other['name']} | message: {message}\n"
+            msg = f"{datetime.now().strftime('%Y-%m-%d %I:%M %p')} | from: {current['name']} | to: {other['name']} | message: {message}"
 
             with open(self.message_log, "a", encoding="utf-8") as f:
-                f.write(msg)
+                f.write(f"{msg}\n")
             print(f"Message to {other['name']} sent!\n")
 
     def view_messages(self):
@@ -515,12 +516,14 @@ class account():
         """
         with open(self.message_log, "r", encoding="utf-8") as f:
             text = f.readlines()
-
+        name = self.current_user['name']
         found = False
+        print("==== MESSAGES ====")
         for message in text:
-            if self.current_user['name'] in message:
+            if f"from: {name}" in message or f"to: {name}" in message:
                 print(message.strip())
                 found = True
+
         if not found:
             print("You have no messages.")
 

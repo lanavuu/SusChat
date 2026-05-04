@@ -3,8 +3,8 @@ account = account()
 
 def block_scene():
     while True:
-        option = int(input("==== BLOCK STATION ====\n1. Block Crew\n2. Unblock Crew\n3. View blocked\n4. Return\nInput: "))
         try:
+            option = int(input("==== BLOCK STATION ====\n1. Block Crew\n2. Unblock Crew\n3. View blocked\n4. Return\nInput: "))
             if option < 1 or option > 4:
                 raise ValueError("Error: enter a number from 1-4.")
         except Exception as e:
@@ -34,7 +34,6 @@ def viewing_other_accounts():
             option = input("The crewmate you entered doesn't exist. Please enter the following:\n1. Keep Searching\n2. Exit Lookup Station\nInput: ")
             if option == 1:
                 viewing_other_accounts()
-                break
             elif option == 2:
                 break
 
@@ -52,8 +51,8 @@ def edit_account_info_scene():
     print("====== GENERAL ACCOUNT INFO ======\n")
     account.print_account_information()
     while True:
-        option = int(input("Would you like to edit:\n1. Favorite Color\n2. Favorite Role\n3. Exit\nInput: "))
         try:
+            option = int(input("Would you like to edit:\n1. Favorite Color\n2. Favorite Role\n3. Exit\nInput: "))
             if option < 1 or option > 3:
                 raise ValueError("Error: enter a valid number between 1-3.")
         except Exception as e:
@@ -77,9 +76,8 @@ def ship_message_scene():
     msg = input("\nEnter the message: ")
     account.send_message(crew, msg)
     while True:
-
-        option = int(input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\nInput: "))
         try:
+            option = int(input("=== COMMUNICATIONS ===\n1. Send another message\n2. Return to Inbox\nInput: "))
             if option < 1 or option > 2:
                 raise ValueError("Error: enter a valid number between 1-2.")
         except Exception as e:
@@ -94,8 +92,8 @@ def ship_message_scene():
 def inbox_scene():
 
     while True:
-        option= int(input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:"))
         try:
+            option= int(input("===== INBOX =====\n1. Ship a Message\n2. View Messages\n3. Return\nInput:"))
             if option < 1 or option >3:
                 raise ValueError("Error: enter a valid number between 1-3.")
         except Exception as e:
@@ -112,9 +110,8 @@ def inbox_scene():
 def manage_crew():
    
     while True:
-        print("====== YOUR CREWMATES ======")
-        option = int(input("1. View Crew-list\n2. Search or Manage A Crewmate\n3. Return\nInput: "))
         try:
+            option = int(input("====== YOUR CREWMATES ======\n1. View Crew-list\n2. Search or Manage A Crewmate\n3. Return\nInput: "))
             if option < 1 or option > 3:
                 raise ValueError("Error: enter a valid number")
         except Exception as e:
@@ -126,13 +123,12 @@ def manage_crew():
                 account.get_sent_friend_requests()
             elif option == 2:
                 search_scene()
-                break
             elif option == 3:
                 break
 def search_scene():
     while True:
-        option = int(input("====== CREWMATE SEARCH-N-MANAGE ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Manage Block\n5. Return\nInput: "))
         try:
+            option = int(input("====== CREWMATE SEARCH-N-MANAGE ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Manage Block\n5. Return\nInput: "))
             if option < 1 or option > 5:
                 raise ValueError("Error: enter a valid number (1-5).")
         except Exception as e:
@@ -153,10 +149,7 @@ def search_scene():
                 
             elif option == 4:
                 block_scene()
-                account.get_crew_list()
-                crew = input("\nEnter crew you want to block (you can also block crews not from the list): ")
-                account.block(crew)
-                
+        
             elif option == 5:
                 break   
 
@@ -167,8 +160,8 @@ def clip_scene():
     pass
 def settings():
     while True:
-        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\n\n6. DELETE ACCOUNT\nInput: "))
         try:
+            option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\n\n6. DELETE ACCOUNT\nInput: "))
             if option < 1 or option > 6:
                 raise ValueError("Error: enter a valid number between 1-6.\n")
         except Exception as e:
@@ -214,8 +207,8 @@ def login_scene():
     logged_in = account.login(user, passw)
     if logged_in == True:
         while True:
-            option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. Clip share\n6. Settings\n7. FAQ\nInput: "))
             try:
+                option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. Clip share\n6. Settings\n7. FAQ\nInput: "))
                 if option < 1 or option > 7:
                     raise ValueError("Error: enter a valid number between 1-7.")
             except Exception as e:
@@ -239,8 +232,9 @@ def login_scene():
                 elif option == 7:
                     faq()
     else:
-        option = int(input(("======= Login Unsuccessful =======\n1. Try again\n2. Return to previous page\nInput: ")))
+        
         try:
+            option = int(input(("======= Login Unsuccessful =======\n1. Try again\n2. Return to previous page\nInput: ")))
             if option < 1 or option >2:
                 raise ValueError("Error: enter 1 or 2\n")
         except Exception as e:
@@ -256,15 +250,18 @@ def create_account_scene():
     userEntersName = input("\nPlease enter a username: ")
     userEntersPassword = input("\nPlease enter a password: ")
     newAcc = account.create_account(userEntersName, userEntersPassword)
-    print("Account creation success!\n Redirecting you to login page..\n")
+    if newAcc:
+        print("Account creation success!\n Redirecting you to login page..\n")
+    else:
+        print("ERROR: Account creation failed.. Redirecting you to login page..\n")
     login_scene()
 
 # MAIN MENU ==========
 def main_menu():
 
     while True:
-        option = int(input("\n======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\nInput: "))
         try:
+            option = int(input("\n======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\nInput: "))
             if option < 1 or option > 3:
                 raise ValueError("Error: enter a valid number between 1-3.\n")
         except Exception as e:
