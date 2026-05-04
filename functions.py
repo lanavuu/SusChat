@@ -547,7 +547,7 @@ class account():
         with open(self.board, "r", encoding="utf-8") as f:
             file = json.load(f)
         for user in file:
-            print(f"User: {user['name']}\nCategory: {user['category']}\n{user['tip']}")
+            print(f"\nUser: {user['name']}\nCategory: {user['category']}\n{user['tip']}")
         
 
     def delete_tip(self):
@@ -557,13 +557,20 @@ class account():
         
         with open(self.board, "r", encoding="utf-8") as f:
             file = json.load(f)
-
+        found = False
         for user in file:
             if user['name'] == self.current_user['name']:
                 file.remove(user)
+                found = True
+                break
+        if found:
+
             with open(self.board, "w", encoding="utf-8") as f:
                 json.dump(file, f, indent=4)
+            print("Tip deleted.")
             return True
-        return False
+        else:
+            print("Tip not deleted, or you had no tips.")
+            return False
             
         
