@@ -1,3 +1,4 @@
+"""Contains all the functions ``main.py`` uses. Class handles the user's account and every interactive feature of main.py."""
 import json
 from datetime import datetime
 from pathlib import Path

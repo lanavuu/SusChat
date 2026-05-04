@@ -1,3 +1,4 @@
+"""Contains the menu logic for the entire system."""
 from functions import account
 account = account()
 
@@ -37,7 +38,9 @@ def viewing_other_accounts():
             elif option == 2:
                 break
 
-# ===== Editing account info functions ====
+
+# ========== SETTING FUNCTIONS ==========
+
 def color_scene():
     colors = {
         1: "Red",
@@ -104,8 +107,6 @@ def role_scene():
             print(f"Favorite role added: {chosen_role}")
             account.set_favorite_role(chosen_role)
             break
-
-# ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
     while True:
