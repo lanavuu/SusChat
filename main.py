@@ -5,8 +5,8 @@ def block_scene():
     while True:
         option = int(input("==== BLOCK STATION ====\n1. Block Crew\n2. Unblock Crew\n3. View blocked\n4. Return\nInput: "))
         try:
-            if option < 1 or option > 3:
-                raise ValueError("Error: enter a number from 1-3.")
+            if option < 1 or option > 4:
+                raise ValueError("Error: enter a number from 1-4.")
         except Exception as e:
             print(e)
         else:

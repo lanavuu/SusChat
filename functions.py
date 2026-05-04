@@ -165,7 +165,7 @@ class account():
         # dict.get(key, default val), if friends doesn't have a value give an empty list
         friends = self.current_user.get("friends", [])
         if friends == []:
-            print("\nCrew list is empty.")
+            print("\nYou have no friends.")
             return
         print("\n======= CREW LIST =======")
         i = 1
@@ -250,11 +250,11 @@ class account():
         
         """
         if self.current_user['received friend requests'] == []:
-            print("\nCrew list is empty.")
+            print("\nNo friend requests received.")
             return
         
         print("\n======= RECEIVED FRIEND REQUESTS =======")
-        i = 0
+        i = 1
         for crew in self.current_user['received friend requests']:
             print(f'{i}. {crew}\n')
             i+=1
@@ -268,10 +268,10 @@ class account():
    
         """
         if self.current_user['sent friend requests'] == []:
-            print("\nCrew list is empty.")
+            print("\nNo friend requests sent.")
         else:
             print("\n======= SENT FRIEND REQUESTS =======")
-            i = 0
+            i = 1
             for crew in self.current_user['sent friend requests']:
                 print(f'{i}. {crew}\n')
                 i+=1

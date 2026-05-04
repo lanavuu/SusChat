@@ -6,7 +6,9 @@
         "favorite color": "rose",
         "favorite role": "imposter",
         "received friend requests": [],
-        "sent friend requests": [],
+        "sent friend requests": [
+            "catlover"
+        ],
         "blocked": [
             "bombosus"
         ]
@@ -37,7 +39,9 @@
         "friends": [],
         "favorite color": "maroon",
         "favorite role": "detective",
-        "received friend requests": [],
+        "received friend requests": [
+            "lana"
+        ],
         "sent friend requests": [],
         "blocked": []
     }
