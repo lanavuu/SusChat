@@ -507,6 +507,23 @@ class account():
                 f.write(msg)
             print(f"Message to {other['name']} sent!\n")
 
+    def view_messages(self):
+        """View messages by locating account name in ``message_log.txt``
+        
+        Return:
+            If account name found, print the message. If no found, print a error message.
+        """
+        with open(self.message_log, "r", encoding="utf-8") as f:
+            text = f.readlines()
+
+        found = False
+        for message in text:
+            if self.current_user['name'] in message:
+                print(message.strip())
+                found = True
+        if not found:
+            print("You have no messages.")
+
     def verify_account(self):
         # helper function to identify account
         with open(self.file, "r") as f:
