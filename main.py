@@ -228,7 +228,16 @@ def search_scene():
             elif option == 5:
                 break   
 
-
+def post_tip_scene():
+    while True:
+        try:
+            category = input("What category is this tip in?\nexamples: Imposter, Viper, Detective, etc.\nInput: ")
+            tip = input("\nInput your tip: ")
+        except Exception:
+            print("There was an error uplaoding your tip.")
+        else:
+            account.upload_tip(category, tip)
+            break
 def board_scene():
     while True:
         try:
@@ -239,11 +248,11 @@ def board_scene():
             print(e)
         else:
             if option == 1:
-                pass
+                post_tip_scene()
             elif option == 2:
-                pass
+                account.delete_tip()
             elif option == 3:
-                pass
+                account.view_tips()
             elif option == 4:
                 break
 
