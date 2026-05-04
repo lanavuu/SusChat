@@ -2,30 +2,6 @@
 from functions import account
 account = account()
 
-def block_scene():
-    while True:
-        try:
-            option = int(input("==== BLOCK STATION ====\n1. Block Crew\n2. Unblock Crew\n3. View blocked\n4. Return\nInput: "))
-            if option < 1 or option > 4:
-                raise ValueError("Error: enter a number from 1-4.")
-        except Exception as e:
-            print(e)
-        else:
-            if option == 1:
-                account.get_crew_list()
-                crew = input("\nEnter crew you want to block (you can also block crews not from the list): ")
-                account.block(crew)
-                
-            elif option == 2:
-                account.get_blocked_list()
-                crew =input("\nEnter the crew you would like to unblock: ")
-                account.unblock(crew)
-                
-            elif option == 3:
-                account.get_blocked_list()
-            elif option == 4:
-                break
-
 # ========== MANAGING FRIENDS/ VIEWING ACCOUNTS
 def viewing_other_accounts():
     while True:
@@ -183,24 +159,30 @@ def inbox_scene():
             elif option == 3:
                 break
 
-def manage_crew():
-   
+def block_scene():
     while True:
         try:
-            option = int(input("====== YOUR CREWMATES ======\n1. View Crew-list\n2. Search or Manage A Crewmate\n3. Return\nInput: "))
-            if option < 1 or option > 3:
-                raise ValueError("Error: enter a valid number")
+            option = int(input("==== BLOCK STATION ====\n1. Block Crew\n2. Unblock Crew\n3. View blocked\n4. Return\nInput: "))
+            if option < 1 or option > 4:
+                raise ValueError("Error: enter a number from 1-4.")
         except Exception as e:
             print(e)
         else:
             if option == 1:
                 account.get_crew_list()
-                account.get_received_friend_requests()
-                account.get_sent_friend_requests()
+                crew = input("\nEnter crew you want to block (you can also block crews not from the list): ")
+                account.block(crew)
+                
             elif option == 2:
-                search_scene()
+                account.get_blocked_list()
+                crew =input("\nEnter the crew you would like to unblock: ")
+                account.unblock(crew)
+                
             elif option == 3:
+                account.get_blocked_list()
+            elif option == 4:
                 break
+
 def search_scene():
     while True:
         try:
@@ -298,6 +280,25 @@ def settings():
 def faq():
     pass
 
+def manage_crew():
+   
+    while True:
+        try:
+            option = int(input("====== YOUR CREWMATES ======\n1. View Crew-list\n2. Search or Manage A Crewmate\n3. Return\nInput: "))
+            if option < 1 or option > 3:
+                raise ValueError("Error: enter a valid number")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                account.get_crew_list()
+                account.get_received_friend_requests()
+                account.get_sent_friend_requests()
+            elif option == 2:
+                search_scene()
+            elif option == 3:
+                break
+
 # ========== MAIN MENU FUNCTIONS ==========
 def space_hub():
     while True:
@@ -314,7 +315,6 @@ def space_hub():
                 inbox_scene()
             elif option == 3:
                 manage_crew()
-                
             elif option == 4:
                 board_scene()
             elif option == 5:
