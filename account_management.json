@@ -7,7 +7,8 @@
         "favorite role": "imposter",
         "received friend requests": [],
         "sent friend requests": [
-            "catlover"
+            "catlover",
+            "instructor"
         ],
         "blocked": [
             "bombosus"
@@ -39,6 +40,18 @@
         "friends": [],
         "favorite color": "maroon",
         "favorite role": "detective",
+        "received friend requests": [
+            "lana"
+        ],
+        "sent friend requests": [],
+        "blocked": []
+    },
+    {
+        "name": "instructor",
+        "password": "123",
+        "friends": [],
+        "favorite color": "n/a",
+        "favorite role": "n/a",
         "received friend requests": [
             "lana"
         ],

@@ -303,24 +303,24 @@ def manage_crew():
 def space_hub():
     while True:
         try:
-            option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. FAQ\n6. Settings\nInput: "))
-            if option < 1 or option > 7:
-                raise ValueError("Error: enter a valid number between 1-7.")
+            option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Inbox\n2. Manage Crews\n3. Tip Board\n4. FAQ\n\n5. SETTINGS\nInput: "))
+            if option < 1 or option > 5:
+                raise ValueError("Error: enter a valid number between 1-5.")
         except Exception as e:
             print(e)
         else:
             if option == 1:
-                ship_message_scene()
-            elif option == 2:
                 inbox_scene()
-            elif option == 3:
+            elif option == 2:
                 manage_crew()
-            elif option == 4:
+            elif option == 3:
                 board_scene()
-            elif option == 5:
+            elif option == 4:
                 faq()
-            elif option == 6:
+            elif option == 5:
                 settings()
+                if account.current_user is None:
+                    break
 
 def login_scene():
     user = input("\nUsername: ")
