@@ -174,10 +174,13 @@ def settings():
                 except Exception as e:
                     print(e)
                 else:
-                    if option == 1:
-                        account.delete_account()
-                        break
-                    elif option == 2:
+                    if choice == 1:
+                        account = account.delete_account()
+                        if account == True:
+                            break
+                        elif account == False:
+                            print("Account deletion failed")
+                    elif choice == 2:
                         break
 
 def faq():
