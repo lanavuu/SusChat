@@ -528,8 +528,20 @@ class account():
         if not found:
             print("You have no messages.")
 
-    def upload_tip():
-        pass
+    def upload_tip(self, category, tip):
+        with open(self.board, "r", encoding="utf-8") as f:
+            file = json.load(f)
+
+        if self.current_user == None:
+            print("Must be logged in to post tips.")
+            return False
+        
+        new_tip = {'name': self.current_user['name'], 'category' : category, 'tip': tip}
+        file.append(new_tip)
+
+        with open(self.board, "w", encoding="utf-8") as f:
+            json.dump(file, f, indent=4)
+
     def view_tips():
         pass
 
