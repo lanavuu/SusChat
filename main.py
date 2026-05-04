@@ -1,5 +1,30 @@
 from functions import account
 account = account()
+
+def block_scene():
+    while True:
+        option = int(input("==== BLOCK STATION ====\n1. Block Crew\n2. Unblock Crew\n3. View blocked\n4. Return\nInput: "))
+        try:
+            if option < 1 or option > 3:
+                raise ValueError("Error: enter a number from 1-3.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                account.get_crew_list()
+                crew = input("\nEnter crew you want to block (you can also block crews not from the list): ")
+                account.block(crew)
+                
+            elif option == 2:
+                account.get_blocked_list()
+                crew =input("\nEnter the crew you would like to unblock: ")
+                account.unblock(crew)
+                
+            elif option == 3:
+                account.get_blocked_list()
+            elif option == 4:
+                break
+
 # ========== MANAGING FRIENDS/ VIEWING ACCOUNTS
 def viewing_other_accounts():
     while True:
@@ -80,7 +105,7 @@ def inbox_scene():
                 ship_message_scene()
                 break
             elif option == 2:
-                pass
+                account.view_messages()
             elif option == 3:
                 break
 
@@ -97,7 +122,8 @@ def manage_crew():
         else:
             if option == 1:
                 account.get_crew_list()
-                
+                account.get_received_friend_requests()
+                account.get_sent_friend_requests()
             elif option == 2:
                 search_scene()
                 break
@@ -105,10 +131,10 @@ def manage_crew():
                 break
 def search_scene():
     while True:
-        option = int(input("====== CREWMATE SEARCH-N-MANAGE ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Block Crewmate\n5. Unblock\n6. View blocked\n7. Return\nInput: "))
+        option = int(input("====== CREWMATE SEARCH-N-MANAGE ======\n1. View Crewmate Account\n2. Add Crewmate\n3. Unadd Crewmate\n4. Manage Block\n5. Return\nInput: "))
         try:
-            if option < 1 or option > 7:
-                raise ValueError("Error: enter a valid number (1-7).")
+            if option < 1 or option > 5:
+                raise ValueError("Error: enter a valid number (1-5).")
         except Exception as e:
             print(e)
         else:
@@ -116,7 +142,6 @@ def search_scene():
                 crew = input("\nEnter crew you want to view: ")
                 account.print_other_acc_info(crew)
              
-                
             elif option == 2:
                 crew = input("\nEnter crew you want to add: ")
                 account.add_crew(crew)
@@ -127,19 +152,14 @@ def search_scene():
                 account.unadd_crew(crew)
                 
             elif option == 4:
+                block_scene()
                 account.get_crew_list()
                 crew = input("\nEnter crew you want to block (you can also block crews not from the list): ")
                 account.block(crew)
                 
             elif option == 5:
-                account.get_blocked_list()
-                crew =input("\nEnter the crew you would like to unblock: ")
-                account.unblock(crew)
-                
-            elif option == 6:
-                account.get_blocked_list()
-            elif option == 7:
-                break
+                break   
+
 
 def board_scene():
     pass
@@ -147,7 +167,7 @@ def clip_scene():
     pass
 def settings():
     while True:
-        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\n6. DELETE ACCOUNT\nInput: "))
+        option = int(input("======= SPACE SETTINGS =======\n1. Edit Username\n2. Change Password\n3. Account Info\n4. Sign Out\n5. Return to Space Hub\n\n6. DELETE ACCOUNT\nInput: "))
         try:
             if option < 1 or option > 6:
                 raise ValueError("Error: enter a valid number between 1-6.\n")
