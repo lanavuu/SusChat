@@ -2,12 +2,13 @@
     {
         "name": "lana",
         "password": "111",
-        "friends": [],
-        "favorite color": "rose",
-        "favorite role": "imposter",
+        "friends": [
+            "catlover"
+        ],
+        "favorite color": "Banana",
+        "favorite role": "Viper",
         "received friend requests": [],
         "sent friend requests": [
-            "catlover",
             "instructor"
         ],
         "blocked": [
@@ -30,20 +31,24 @@
         "friends": [],
         "favorite color": "n/a",
         "favorite role": "n/a",
-        "received friend requests": [],
+        "received friend requests": [
+            "catlover"
+        ],
         "sent friend requests": [],
         "blocked": []
     },
     {
         "name": "catlover",
         "password": "1233",
-        "friends": [],
-        "favorite color": "maroon",
-        "favorite role": "detective",
-        "received friend requests": [
+        "friends": [
             "lana"
         ],
-        "sent friend requests": [],
+        "favorite color": "maroon",
+        "favorite role": "detective",
+        "received friend requests": [],
+        "sent friend requests": [
+            "bombosus"
+        ],
         "blocked": []
     },
     {

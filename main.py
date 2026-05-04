@@ -39,7 +39,7 @@ def color_scene():
         18: "Coral"
     }
     while True:
-        print("==== AMONGUS COLORS ====\n")
+        print("==== AMONGUS COLORS ====")
         for key, value in colors.items():
             print(f"{key}. {value}")
         try:
@@ -69,9 +69,9 @@ def role_scene():
         12: "Ghost",
     }
     while True:
-        print("==== AMONGUS ROLES ====\n")
+        print("==== AMONGUS ROLES ====")
         for key,value in roles.items():
-            print(f"{key}, {value}")
+            print(f"{key}. {value}")
         try:
             choice = int(input("Enter your favorite role: "))
             if choice not in roles:
@@ -214,7 +214,7 @@ def search_scene():
 def post_tip_scene():
     while True:
         try:
-            category = input("What category is this tip in?\nexamples: Imposter, Viper, Detective, etc.\nInput: ")
+            category = input("What category is this tip in?\nexamples: Shapeshift, Viper, Detective, etc.\nInput: ")
             tip = input("\nInput your tip: ")
         except Exception:
             print("There was an error uplaoding your tip.")
