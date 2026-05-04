@@ -59,8 +59,16 @@ class account():
             username: can be a mixture of int or string
             password: can be a mixture of int or string
 
-        FIX - make sure it doesn't match any other names in the file
+        Return:
+            ``False`` if another account has the same username.
         """
+        with open(self.file, "r", encoding="utf=8") as f:
+            file = json.load(f)
+
+        for user in file:
+            if user['name'] == username:
+                return False
+            
         account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : [], "blocked": []}
         self.__account_database.append(account)
 
