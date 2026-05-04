@@ -37,6 +37,46 @@ def viewing_other_accounts():
             elif option == 2:
                 break
 
+# ===== Editing account info functions ====
+def color_scene():
+    colors = {
+        1: "Red",
+        2: "Blue",
+        3: "Green",
+        4: "Pink",
+        5: "Orange",
+        6: "Yellow",
+        7: "Black",
+        8: "White",
+        9: "Purple",
+        10: "Brown",
+        11: "Cyan",
+        12: "Lime",
+        13: "Maroon",
+        14: "Rose",
+        15: "Banana",
+        16: "Gray",
+        17: "Tan",
+        18: "Coral"
+    }
+    while True:
+        print("==== AMONGUS COLORS ====\n")
+        for key, value in colors.items():
+            print(f"{key}. {value}")
+        try:
+            choice = int(input("Enter your favorite color: "))
+            if choice not in colors:
+                raise ValueError("Error: enter a valid number 1-18")
+        except Exception as e:
+            print(e)
+        else:
+            chosen_color = colors[choice]
+            print(f"Favorite color added: {chosen_color}")
+            account.set_favorite_color(chosen_color)
+            break
+def role_scene():
+        pass
+
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
@@ -59,13 +99,9 @@ def edit_account_info_scene():
             print(e)
         else:
             if option == 1:
-                color = input("Favorite Color: ")
-                account.set_favorite_color(color)
-                break
+                color_scene()
             if option == 2:
-                role = input("Favorite Role: ")
-                account.set_favorite_role(role)
-                break
+                role_scene()
             if option == 3:
                 break
 
@@ -261,7 +297,7 @@ def main_menu():
 
     while True:
         try:
-            option = int(input("\n======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\nInput: "))
+            option = int(input("======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\nInput: "))
             if option < 1 or option > 3:
                 raise ValueError("Error: enter a valid number between 1-3.\n")
         except Exception as e:

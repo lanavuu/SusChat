@@ -472,7 +472,7 @@ class account():
             print("Crewmate not found")
             return
 
-        print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['name']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}\n")
+        print(f"\n==== CREWMATE INFORMATION ====\nUsername: {other['name']}\nFavorite Color: {other['favorite color']}\nFavorite Role: {other['favorite role']}")
 
     def send_message(self, receiver, message):
         """Send a message to another user
