@@ -20,7 +20,8 @@ class account():
         Removes the account in other accounts `name`, `sent friend requests`, `received friend requests`, and `blocked`.
 
         Return:
-            ``True`` if account deletion handled successfully. ``False`` if account failed for deletion.
+            ``True`` if account deletion handled successfully.
+            ``False`` if account failed for deletion.
         """
         if self.current_user is None:
             print("Error: account not logged in.")
@@ -88,7 +89,8 @@ class account():
             password: provided password from user
 
         Return:
-            ``True`` if found a match in the file, ``False`` if could not find a match in the file.
+            ``True`` if found a match in the file,
+            ``False`` if could not find a match in the file.
         """
         with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
@@ -529,6 +531,18 @@ class account():
             print("You have no messages.")
 
     def upload_tip(self, category, tip):
+        """Upload a tip to ``tip_board``.
+        
+        If logged in, will append the tip in a format to the ``tip_board`` file.
+        
+        Args:
+            category: user specifies which category the tip fits in.
+            tip: the tip the user want to upload.
+
+        Return:
+            ``False`` if the user is not logged in.
+            ``True`` when tip was published successfully.
+        """
         if self.current_user == None:
             print("Must be logged in to post tips.")
             return False
@@ -543,14 +557,26 @@ class account():
             json.dump(file, f, indent=4)
 
         return True
+    
     def view_tips(self):
+        """View tips from ``tip_board``.
+        
+        Prints a formatted text from ``tip_board``.
+        """
         with open(self.board, "r", encoding="utf-8") as f:
             file = json.load(f)
         for user in file:
             print(f"\nUser: {user['name']}\nCategory: {user['category']}\n{user['tip']}")
         
-
     def delete_tip(self):
+        """Delete a tip from ``tip_board``
+        
+        Find if the user has a tip and delete the first tip found.
+        
+        Return:
+            ``False`` if user is not logged in or a tip could not be deleted.
+            ``True`` if the tip has been successfully deleted.
+        """
         if self.current_user == None:
             print("Log in to delete your tip.")
             return False
