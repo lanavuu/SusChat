@@ -15,7 +15,11 @@ class account():
     def delete_account(self):
         """Delete current user's account.
         
-        Find the user's name in the file and delete it from the file.
+        Deleting an account will also require removing their name from other account's lists.
+        Removes the account in other accounts `name`, `sent friend requests`, `received friend requests`, and `blocked`.
+
+        Return:
+            ``True`` if account deletion handled successfully. ``False`` if account failed for deletion.
         """
         if self.current_user is None:
             print("Error: account not logged in.")
@@ -96,11 +100,14 @@ class account():
         Args:
             newName: the name that the user wants to change to.
         
-        FIX - make sure it doesn't match any other names in the file
-        
+        Return:
+            ``False`` if ```newName``` is used by another account.
         """
         with open(self.file, "r") as f:
            file = json.load(f)
+        for user in file:
+            if user['name'] == newName:
+                return False
 
         for user in file:
            if user['name'] == self.current_user['name']:
@@ -109,7 +116,7 @@ class account():
                self.current_user = user
                break
            
-        with open(self.file, "w") as f:
+        with open(self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
                
     def change_password(self, newPass):

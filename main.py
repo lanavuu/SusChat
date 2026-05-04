@@ -175,10 +175,10 @@ def settings():
                     print(e)
                 else:
                     if choice == 1:
-                        account = account.delete_account()
-                        if account == True:
+                        check_deleted = account.delete_account()
+                        if check_deleted == True:
                             break
-                        elif account == False:
+                        elif check_deleted == False:
                             print("Account deletion failed")
                     elif choice == 2:
                         break
