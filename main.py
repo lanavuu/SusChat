@@ -230,7 +230,22 @@ def search_scene():
 
 
 def board_scene():
-    pass
+    while True:
+        try:
+            option = int(input("==== TIP BOARD ====\n1. Post a Tip\n2. Delete a Tip\n3. View Tips\n4. Return\nInput: "))
+            if option < 1 or option > 4:
+                raise ValueError("Enter a valid number between 1-4.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                pass
+            elif option == 2:
+                pass
+            elif option == 3:
+                pass
+            elif option == 4:
+                break
 
 def settings():
     while True:
@@ -296,8 +311,6 @@ def space_hub():
                 faq()
             elif option == 6:
                 settings()
-                
-
 
 def login_scene():
     user = input("\nUsername: ")

@@ -527,15 +527,11 @@ class account():
         if not found:
             print("You have no messages.")
 
-    def verify_account(self):
-        # helper function to identify account
-        with open(self.file, "r") as f:
-            file = json.load(f)
-        if self.current_user == None:
-            return False
-        
-        for user in file:
-            if user['name'] == self.current_user['name']:
-                return user
-        return False
-
+    def upload_tip():
+        pass
+    def view_tips():
+        pass
+    def edit_tip():
+        pass
+    def delete_tip():
+        pass
