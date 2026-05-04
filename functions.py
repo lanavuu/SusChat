@@ -6,6 +6,7 @@ class account():
     def __init__(self, filename="account_management.json"):
         self.file = Path(__file__).parent / filename
         self.message_log = Path(__file__).parent / "message_log.txt"
+        self.board = Path(__file__).parent / "tip_board.json"
         self.__account_database = []
         self.current_user = None
 
@@ -72,7 +73,7 @@ class account():
         account = {"name": username, "password": password, "friends": [], "favorite color": "n/a", "favorite role": "n/a", "received friend requests": [], "sent friend requests" : [], "blocked": []}
         file.append(account)
 
-        with open(self.file, "w") as f:
+        with open(self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
         return True
 
@@ -89,7 +90,7 @@ class account():
         Return:
             ``True`` if found a match in the file, ``False`` if could not find a match in the file.
         """
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
@@ -112,7 +113,7 @@ class account():
         Return:
             ``False`` if ```newName``` is used by another account.
         """
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
            file = json.load(f)
         for user in file:
             if user['name'] == newName:
@@ -136,7 +137,7 @@ class account():
         Args:
             newPass: the new password that user provided and wants to change to.
         """
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
@@ -145,7 +146,7 @@ class account():
                 self.current_user = user
                 break
 
-        with open(self.file, "w") as f:
+        with open(self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
 
     def logout(self):
@@ -184,7 +185,7 @@ class account():
         Return:
             None
         """
-        with open (self.file, "r") as f:
+        with open (self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
@@ -204,7 +205,7 @@ class account():
             name_of_crewmate: name of the other user that the current user wants to add/send a friend request to.
         
         """
-        with open(self.file, "r")as f:
+        with open(self.file, "r", encoding="utf-8")as f:
             file = json.load(f)
 
         current = None
@@ -238,7 +239,7 @@ class account():
             
         self.current_user = current
 
-        with open (self.file, "w") as f:
+        with open (self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
 
 
@@ -286,7 +287,7 @@ class account():
         If this is true, their names will be removed from eachother's ``friends`` list.
         
         """
-        with open(self.file, "r")as f:
+        with open(self.file, "r", encoding="utf-8")as f:
             file = json.load(f)
 
         current = None
@@ -310,7 +311,7 @@ class account():
 
             self.current_user = current
         
-        with open(self.file, "w")as f:
+        with open(self.file, "w", encoding="utf-8")as f:
             json.dump(file, f, indent=4)
 
     def block(self, name_of_crewmate):
@@ -323,7 +324,7 @@ class account():
         Args:
             name_of_crewmate: name of other user that the user would like to block.
         """
-        with open(self.file, "r")as f:
+        with open(self.file, "r", encoding="utf-8")as f:
             file = json.load(f)
         
         current = None
@@ -347,7 +348,7 @@ class account():
 
         self.current_user = current
 
-        with open (self.file, "w") as f:
+        with open (self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
 
     def unblock(self, crewmate):
@@ -361,7 +362,7 @@ class account():
         if self.current_user['blocked'] == []:
             print("You have no one blocked.\n")
 
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
         
         current = None
@@ -382,7 +383,7 @@ class account():
         
         self.current_user = current
 
-        with open(self.file, "w")as f:
+        with open(self.file, "w", encoding="utf-8")as f:
             json.dump(file, f, indent=4)
 
     def get_blocked_list(self):
@@ -412,7 +413,7 @@ class account():
         Args:
             color: the color the player wants to set as their favorite color.
         """
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
@@ -421,7 +422,7 @@ class account():
                 self.current_user = user
                 break
         
-        with open(self.file, "w") as f:
+        with open(self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
             
     
@@ -433,7 +434,7 @@ class account():
         Args:
             role: the role the player wants to set as their favorite role.
         """
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         for user in file:
@@ -442,7 +443,7 @@ class account():
                 self.current_user = user
                 break
 
-        with open(self.file, "w") as f:
+        with open(self.file, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
 
     def print_account_information(self):
@@ -459,7 +460,7 @@ class account():
         Find the name of ``other_acc`` in the file then save the key into ``other``. Check if empty.
         If not empty, prints ``other_acc`` 'name', 'favorite color' and 'favorite role'.
         """
-        with open(self.file, "r") as f:
+        with open(self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
 
         other = None
@@ -487,7 +488,7 @@ class account():
         if self.current_user == None:
             print("Error: you are not logged in.")
             return
-        with open (self.file, "r") as f:
+        with open (self.file, "r", encoding="utf-8") as f:
             file = json.load(f)
         
         current = None
@@ -531,7 +532,6 @@ class account():
         pass
     def view_tips():
         pass
-    def edit_tip():
-        pass
+
     def delete_tip():
         pass
