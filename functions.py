@@ -529,12 +529,12 @@ class account():
             print("You have no messages.")
 
     def upload_tip(self, category, tip):
-        with open(self.board, "r", encoding="utf-8") as f:
-            file = json.load(f)
-
         if self.current_user == None:
             print("Must be logged in to post tips.")
             return False
+        
+        with open(self.board, "r", encoding="utf-8") as f:
+            file = json.load(f)
         
         new_tip = {'name': self.current_user['name'], 'category' : category, 'tip': tip}
         file.append(new_tip)
@@ -542,8 +542,13 @@ class account():
         with open(self.board, "w", encoding="utf-8") as f:
             json.dump(file, f, indent=4)
 
-    def view_tips():
-        pass
+        return True
+    def view_tips(self):
+        with open(self.board, "r", encoding="utf-8") as f:
+            file = json.load(f)
+        for user in file:
+            print(f"User: {user['name']}\nCategory: {user['category']}\n{user['tip']}")
+        
 
     def delete_tip():
         pass
