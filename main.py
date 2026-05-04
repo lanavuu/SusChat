@@ -75,8 +75,36 @@ def color_scene():
             account.set_favorite_color(chosen_color)
             break
 def role_scene():
-        pass
-
+    roles = {
+        1: "Crewmate",
+        2: "Scientist",
+        3: "Engineer",
+        4: "Guardian Angel",
+        5: "Noisemaker",
+        6: "Tracker",
+        7: "Detective",
+        8: "Imposter",
+        9: "Shapeshifter",
+        10: "Phantom",
+        11: "Viper",
+        12: "Ghost",
+    }
+    while True:
+        print("==== AMONGUS ROLES ====\n")
+        for key,value in roles.items():
+            print(f"{key}, {value}")
+        try:
+            choice = int(input("Enter your favorite role: "))
+            if choice not in roles:
+                raise ValueError("Error: enter a valid number 1-12")
+        except Exception as e:
+            print(e)
+        else:
+            chosen_role = roles[choice]
+            print(f"Favorite role added: {chosen_role}")
+            account.set_favorite_role(chosen_role)
+            break
+        
 # ========== SETTING FUNCTIONS ==========
 
 def edit_username_scene():
