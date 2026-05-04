@@ -119,6 +119,7 @@ def edit_username_scene():
         else:
             if check == True:
                 print("Username change successful!\n")
+                break
         
 
 def change_password_scene():
@@ -230,8 +231,7 @@ def search_scene():
 
 def board_scene():
     pass
-def clip_scene():
-    pass
+
 def settings():
     while True:
         try:
@@ -274,39 +274,38 @@ def faq():
     pass
 
 # ========== MAIN MENU FUNCTIONS ==========
+def space_hub():
+    while True:
+        try:
+            option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. FAQ\n6. Settings\nInput: "))
+            if option < 1 or option > 7:
+                raise ValueError("Error: enter a valid number between 1-7.")
+        except Exception as e:
+            print(e)
+        else:
+            if option == 1:
+                ship_message_scene()
+            elif option == 2:
+                inbox_scene()
+            elif option == 3:
+                manage_crew()
+                
+            elif option == 4:
+                board_scene()
+            elif option == 5:
+                faq()
+            elif option == 6:
+                settings()
+                
+
 
 def login_scene():
     user = input("\nUsername: ")
     passw = input("Password: ")
     logged_in = account.login(user, passw)
     if logged_in == True:
-        while True:
-            try:
-                option = int(input(f"======= SPACE HUB =======\nWelcome {account.current_user['name']}!\n1. Ship message\n2. Inbox\n3. Manage Crews\n4. Tip board\n5. Clip share\n6. Settings\n7. FAQ\nInput: "))
-                if option < 1 or option > 7:
-                    raise ValueError("Error: enter a valid number between 1-7.")
-            except Exception as e:
-                print(e)
-            else:
-                if option == 1:
-                    ship_message_scene()
-                elif option == 2:
-                    inbox_scene()
-                elif option == 3:
-                    manage_crew()
-                    
-                elif option == 4:
-                    board_scene()
-                    break
-                elif option == 5:
-                    clip_scene()
-                elif option == 6:
-                    settings()
-                    break
-                elif option == 7:
-                    faq()
-    else:
-        
+       space_hub()
+    else:  
         try:
             option = int(input(("======= Login Unsuccessful =======\n1. Try again\n2. Return to previous page\nInput: ")))
             if option < 1 or option >2:
