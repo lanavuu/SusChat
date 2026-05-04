@@ -550,5 +550,20 @@ class account():
             print(f"User: {user['name']}\nCategory: {user['category']}\n{user['tip']}")
         
 
-    def delete_tip():
-        pass
+    def delete_tip(self):
+        if self.current_user == None:
+            print("Log in to delete your tip.")
+            return False
+        
+        with open(self.board, "r", encoding="utf-8") as f:
+            file = json.load(f)
+
+        for user in file:
+            if user['name'] == self.current_user['name']:
+                file.remove(user)
+            with open(self.board, "w", encoding="utf-8") as f:
+                json.dump(file, f, indent=4)
+            return True
+        return False
+            
+        
