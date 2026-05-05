@@ -278,7 +278,11 @@ def settings():
                         break
 
 def faq():
-    pass
+    print("SPACE HUB is where you can check your inbox, manage your friends list, view tip board, and go to settings.")
+    print("\nINBOX is where you can send a view your messages.")
+    print("\nMANAGE CREWS is where you can view your friends list, and search or manage a user.")
+    print("\nTIP BOARD allows you to publicly post tips and view other tips. You may also delete a tip.")
+    print("\nSETTINGS is where you can change your username, password, favorite role and color, sign-out, and account deletion.")
 
 def manage_crew():
    
@@ -357,7 +361,7 @@ def main_menu():
 
     while True:
         try:
-            option = int(input("======= SPACE HUB =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\nInput: "))
+            option = int(input("======= LOGIN PAGE =======\n1. Crewmate Login\n2. Create Crewmate Account\n3. Quit\nInput: "))
             if option < 1 or option > 3:
                 raise ValueError("Error: enter a valid number between 1-3.\n")
         except Exception as e:
