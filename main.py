@@ -278,11 +278,14 @@ def settings():
                         break
 
 def faq():
-    print("SPACE HUB is where you can check your inbox, manage your friends list, view tip board, and go to settings.")
-    print("\nINBOX is where you can send a view your messages.")
-    print("\nMANAGE CREWS is where you can view your friends list, and search or manage a user.")
-    print("\nTIP BOARD allows you to publicly post tips and view other tips. You may also delete a tip.")
-    print("\nSETTINGS is where you can change your username, password, favorite role and color, sign-out, and account deletion.")
+    while True:
+        print("===== FAQ CENTER =====")
+        print("\nSPACE HUB is where you can check your inbox, manage your friends list, view tip board, and go to settings.")
+        print("\nINBOX is where you can send or view your messages.")
+        print("\nMANAGE CREWS is where you can view your friends list, and search or manage a user.")
+        print("\nTIP BOARD allows you to publicly post tips and view other tips. You may also delete a tip.")
+        print("\nSETTINGS is where you can change your username, password, favorite role and color, sign-out, and account deletion.\n")
+        break
 
 def manage_crew():
    
